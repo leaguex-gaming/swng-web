@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Text, View, StyleSheet, Pressable } from "react-native-web";
 import Bg from "../../../public/images/LandingImage.png";
-import { windowMaxWidth } from "../../constants/DeviceData";
+import { windowMaxWidth } from "@/constants/DeviceData";
 import MyText from "../../components/common/MyText";
 import MyTextLink from "@/components/common/MyTextLink";
 import { buttonGoogle } from "@/constants/theme/colors";

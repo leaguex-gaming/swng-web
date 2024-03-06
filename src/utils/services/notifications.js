@@ -1,10 +1,10 @@
 "use client";
 
-import { setPushNotification } from "../../redux/slices/common-slice";
-import store from "../../redux/store";
-import Toast from "react-native-toast-message";
-import { getNotificationHistory } from "../../redux/thunks/community";
-import { removeFcm } from "../../redux/thunks/authentication";
+import { setPushNotification } from "@/store/slices/common-slice";
+import store from "@/store/store";
+// import Toast from "react-native-toast-message";
+import { getNotificationHistory } from "@/store/thunks/community";
+import { removeFcm } from "@/store/thunks/authentication";
 
 export const requestNoficationPermission = async () => {
   const authStatus = await Notification.requestPermission();

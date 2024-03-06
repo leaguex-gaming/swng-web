@@ -19,6 +19,7 @@ import { deleteUserSliceData, updateUserSliceData } from "../slices/user-slice";
 import { getMessaging, getToken } from "firebase/messaging";
 import { VAP_ID_KEY } from "../../constants/StaticData";
 import { updateLocalAccessToken } from "@/utils/services/tokens";
+import { errorToast } from "@/utils/helpers/errorToast";
 
 const googleSignIn = createAsyncThunk(
   "auth/googleSignIn",

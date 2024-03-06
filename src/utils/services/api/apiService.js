@@ -27,15 +27,22 @@ ApiService.interceptors.response.use(
   }
 );
 
-// ApiService.interceptors.request.use(
-//   res => res,
-//   async err => {
-//     // if (err?.response?.status === 401 || err?.response?.status === 403) {
-//     //   setAccessTokenToHeader();
-//     // }
-//     return err;
-//   },
-// );
+ApiService.interceptors.request.use(
+  (config) => {
+    let [key, value] = document.cookie.split("=");
+    let accessToken = value;
+
+    config.headers["x-access-token"] = `${accessToken}`;
+
+    return config;
+  },
+  async (err) => {
+    // if (err?.response?.status === 401 || err?.response?.status === 403) {
+    //   setAccessTokenToHeader();
+    // }
+    return err;
+  }
+);
 // ApiServiceMultipart.interceptors.response.use(
 //   res => res,
 //   async err => {
