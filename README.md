@@ -15,18 +15,16 @@
 
 - Add font file(.ttf) to root public folder (public/fonts)
 - Add below code to root layout
-
-      const fontName = localFont({
-           src: "../../public/fonts/fontName.ttf",
-           display: "swap",
-           variable: "--font-fontName",
-      });
-
-- Add font variable to html body's className
+  const fontName = localFont({
+  src: "../../public/fonts/fontName.ttf",
+  display: "swap",
+  variable: "--font-fontName",
+  });
+- Add font variable to html body's className in root layout file
 - config font to tailwind.config.js
 - You can use added fonts by using tailwind styles with mentioned name.
 
 ### To add svg
 
 - Change your svg file to svg component `<link>` : <https://react-svgr.com/playground/>
-- Add your file svg folder (public/svg)
+- Add your file to svg folder (public/svg)
