@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "relative",
     zIndex: 1,
-    backgroundColor: "red",
   },
   headerTextContainer: {
     position: "relative",
