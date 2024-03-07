@@ -741,10 +741,8 @@ const communitySlice = createSlice({
       state.getTopicsLoading = true;
     });
     builder.addCase(getTopics.fulfilled, (state, action) => {
-      const { topics } = action.payload;
-
       state.getTopicsLoading = false;
-      state.interestTopics = topics;
+      state.interestTopics = action?.payload?.topics;
     });
     builder.addCase(getTopics.rejected, (state, action) => {
       state.getTopicsLoading = false;

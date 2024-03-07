@@ -27,14 +27,15 @@ import {
   updateSignupFrom,
 } from "@/store/slices/common-slice";
 import { getProfile } from "@/store/thunks/user";
-import CommunityHeader from "@/components/common/community/CommunityHeader";
+import CommunityHeader from "@/components/community/CommunityHeader";
 import LottieLoader from "@/components/common/LottieLoader";
 import { checkFCMToken } from "@/store/thunks/authentication";
 import { requestNoficationPermission } from "@/utils/services/notifications";
 import { windowMaxHeight, windowMaxWidth } from "@/constants/DeviceData";
 import { debounce } from "lodash";
 // import { getMatchesThunk } from "../redux/thunks/broadcast";
-import { black2 } from "@/constants/theme/colors";
+import { black } from "@/constants/theme/colors";
+import Post from "@/components/community/Post";
 // import SuggestedProfiles from "@/components/community/SuggestedProfiles";
 
 const Feed = () => {
@@ -199,13 +200,12 @@ const Feed = () => {
     }
 
     return (
-      // <Post
-      //   {...item}
-      //   currentIndex={index}
-      //   marginTop={index === 0 ? 72 : 0}
-      //   currentTopicId={currentTopicId}
-      // />
-      <MyText style={{ height: 500 }}>kishore</MyText>
+      <Post
+        {...item}
+        currentIndex={index}
+        marginTop={index === 0 ? 72 : 0}
+        currentTopicId={currentTopicId}
+      />
     );
   };
 
@@ -379,10 +379,10 @@ const styles = StyleSheet.create({
   container: {
     width: windowMaxWidth,
     height: windowMaxHeight,
-    backgroundColor: black2,
+    backgroundColor: black,
   },
   headerContainer: {
-    backgroundColor: black2,
+    backgroundColor: black,
     position: "absolute",
     top: 0,
     width: "100%",
@@ -407,7 +407,7 @@ const styles = StyleSheet.create({
     width: windowMaxWidth,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: black2,
+    backgroundColor: black,
   },
   loaderContainer: {
     paddingVertical: 10,

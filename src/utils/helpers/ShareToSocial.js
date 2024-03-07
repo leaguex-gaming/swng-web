@@ -1,5 +1,5 @@
-import { sharedPostThunk } from "../../redux/thunks/community";
-import { PlatformOS } from "../../constants/DeviceData";
+import { sharedPostThunk } from "@/store/thunks/community";
+import { PlatformOS } from "@/constants/DeviceData";
 
 // const fs = RNFetchBlob.fs;
 export const ShareToSocial = async (

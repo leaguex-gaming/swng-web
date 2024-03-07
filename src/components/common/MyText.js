@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { StyleSheet } from "react-native-web";
+import { StyleSheet, Text } from "react-native-web";
 import pickBy from "lodash/pickBy";
 import { white } from "../../constants/theme/colors";
 
@@ -112,18 +112,17 @@ const MyText = ({
       ? "font-bold"
       : pageHeaders || buttonText
       ? "font-jaguar"
-      : "font-regular";
+      : "font-regular font-light";
 
   return (
-    <p
-      allowFontScaling={false}
-      numberOfLines={numberOfLines}
-      ellipsizeMode={ellipsizeMode}
+    <span
+      // allowFontScaling={false}
+      // numberOfLines={numberOfLines}
+      // ellipsizeMode={ellipsizeMode}
       style={StyleSheet.flatten([typography, filterStyle, style])}
-      className={className}
-      {...props}>
+      className={className}>
       {children}
-    </p>
+    </span>
   );
 };
 

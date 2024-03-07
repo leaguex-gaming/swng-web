@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import Header from "../Header";
+import Header from "../common/Header";
 import { StyleSheet, View } from "react-native-web";
-import Search from "../../../../public/svg/Search";
-import { PolygonContainer } from "../InBuiltNavigation";
-import AppLogo from "../../../../public/images/swng.png";
+import Search from "../../../public/svg/Search";
+import { PolygonContainer } from "../common/InBuiltNavigation";
+import AppLogo from "../../../public/images/swng.png";
 import Image from "next/image";
 
 const CommunityHeader = () => {
@@ -17,18 +17,18 @@ const CommunityHeader = () => {
           <Image src={AppLogo} style={styles.swngLogo}></Image>
         </View>
       }
-      rightComponent={
-        <PolygonContainer
-          rotate={true}
-          onPress={() => {
-            // rootNavigate("Search", "navigate");
-          }}>
-          <View style={styles.searchContainer}>
-            <Search />
-          </View>
-          <></>
-        </PolygonContainer>
-      }
+      // rightComponent={
+      //   <PolygonContainer
+      //     rotate={true}
+      //     onPress={() => {
+      //       // rootNavigate("Search", "navigate");
+      //     }}>
+      //     <View style={styles.searchContainer}>
+      //       <Search />
+      //     </View>
+      //     <></>
+      //   </PolygonContainer>
+      // }
     />
   );
 };

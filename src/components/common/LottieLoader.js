@@ -6,7 +6,7 @@ import Loader from "../../../public/lottie/sports-ball-loader.json";
 
 export const LottieView = ({
   lottieRef,
-  source,
+  source = Loader,
   loop = false,
   style = { width: "100%", height: "100%" },
   autoPlay = true,
@@ -14,7 +14,7 @@ export const LottieView = ({
   const defaultOptions = {
     loop: loop,
     autoplay: autoPlay,
-    animationData: Loader,
+    animationData: source,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },

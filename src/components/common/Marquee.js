@@ -38,9 +38,8 @@ const Marquee = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: 140,
+    height: 150,
     width: "100%",
-    justifyContent: "center",
   },
   marqueeText: {
     fontSize: 120,

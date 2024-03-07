@@ -12,6 +12,7 @@ export const black2 = "#1E1E20";
 export const black3 = "#404040";
 export const black4 = "rgba(255,255,255,0.25)";
 export const black5 = "#000000CC";
+export const black6 = "rgba(255,255,255,0.8)";
 
 export const background = { dark: ["#331C8D", "#1519AB"], light: "" };
 export const devBackground = { dark: ["#000000", "#000000"], light: "" };
@@ -72,5 +73,6 @@ export const darkBlue = "#164B87";
 export const primaryGreen = "#2FBC32";
 export const darkGreen = "#163F17";
 export const primaryRed = "#FF7474";
+export const link = "#7B98FF";
 
 export const warnErrorToastColor = ["#A0931D", "#6B740300"];
