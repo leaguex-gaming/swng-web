@@ -1,3 +1,5 @@
+"use client";
+
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ApiService } from "../../utils/services/api/apiService";
 import { GET_PROFILE } from "../../constants/endpoints/user-endpoints";
@@ -9,7 +11,7 @@ import {
 import { errorToast } from "../../utils/helpers/errorToast";
 import { GET_USER_PROFILE } from "../../constants/endpoints/community-endpoints";
 import { uploadMediaToS3 } from "./community";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
 
 export const getProfile = createAsyncThunk(
   "userSlice/getProfile",

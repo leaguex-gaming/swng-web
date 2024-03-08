@@ -40,7 +40,7 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children, authentication, dashboard }) {
+export default function RootLayout({ children, authentication }) {
   const userToken = cookies().get("accessToken")?.value;
 
   return (
@@ -51,8 +51,10 @@ export default function RootLayout({ children, authentication, dashboard }) {
           className={
             "flex max-h-screen overflow-hidden min-w-screen bg-black justify-center"
           }>
-          <Providers>{!userToken ? authentication : dashboard}</Providers>
-          {children}
+          <Providers>
+            {!userToken && authentication}
+            {children}
+          </Providers>
         </div>
       </body>
     </html>

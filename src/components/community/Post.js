@@ -30,6 +30,7 @@ import { throttle } from "lodash";
 import DoubleTapHandler from "./DoubleTapHandler";
 // import MentionModal from "./MentionModal";
 import useSound from "use-sound";
+import { useRouter } from "next/navigation";
 // import clapaud from "../../../public/audio/clapaud.mp3";
 
 const FollowsTag = ({ follwedby }) => {
@@ -86,6 +87,7 @@ const Post = (props) => {
     ...otherProps
   } = props;
   // const [play] = useSound(clapaud);
+  const router = useRouter();
 
   //---------------------------------------------state management------------------------------------------//
   const [clapSt, setclapSt] = useState(null);
@@ -140,11 +142,7 @@ const Post = (props) => {
       //     mediaType: props?.media_type,
       //   });
     } else {
-      //   rootNavigate("PostFullScreen", "navigate", {
-      //     postId: id,
-      //     currentTopicId,
-      //     mediaType: props?.media_type,
-      //   });
+      router.push(`/post/${id}`);
     }
     setShowComments(false);
   }, 400);

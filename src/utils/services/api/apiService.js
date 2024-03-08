@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { USER_BASE_URL } from "../../../constants/endpoints/user-endpoints";
+import { getCookie } from "cookies-next";
 
 export const ApiService = axios.create({
   baseURL: USER_BASE_URL,
@@ -30,7 +31,7 @@ ApiService.interceptors.response.use(
 ApiService.interceptors.request.use(
   (config) => {
     let [key, value] = document.cookie.split("=");
-    let accessToken = value;
+    let accessToken = getCookie("accessToken");
 
     config.headers["x-access-token"] = `${accessToken}`;
 

@@ -80,17 +80,24 @@ const Replies = ({
             user_id={item?.user_id}
           />
           {!longPress ? (
-            <View style={{ flexDirection: "row", gap: 5 }}>
+            <View
+              style={{
+                flexDirection: "row",
+                gap: 5,
+                alignItems: "center",
+              }}>
               <Pressable
                 onPress={() => onSecondLevelReplyPress(item)}
-                style={{ margin: 10 }}>
-                <Reply width={25} height={25} />
+                style={{ marginBottom: -15 }}>
+                <Reply width={30} height={30} />
               </Pressable>
 
               {!item?.deleted && (
                 <MemoizedClap
                   count={item?.claps}
-                  additonalStyles={{ justifyContent: "flex-end" }}
+                  additonalStyles={{
+                    justifyContent: "flex-end",
+                  }}
                   userLiked={item?.user_has_liked == "0" ? false : true}
                   onPress={() => onReplyLikePress(item, type)}
                 />
@@ -363,7 +370,7 @@ const Comment = (props) => {
                   onPress={() => {
                     onReplyPress();
                   }}
-                  style={{ margin: 10 }}>
+                  style={{ marginTop: 13, marginRight: 10 }}>
                   <Reply width={25} height={25} />
                 </Pressable>
               )}

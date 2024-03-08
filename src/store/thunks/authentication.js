@@ -118,6 +118,8 @@ const logInSuccess = async ({ userData }, thunkAPI) => {
         isUserInterestSuggested: userData?.interestsExists,
       })
     );
+
+    window.history.replaceState(null, "", "/feed");
   } catch (err) {
     errorToast(err);
   }

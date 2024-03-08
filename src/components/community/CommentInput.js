@@ -148,7 +148,8 @@ const CommentInput = ({
   return (
     <>
       {fullScreenPost && (
-        <MentionModal search={mentionText} onUserPress={selectUser} />
+        // <MentionModal search={mentionText} onUserPress={selectUser} />
+        <></>
       )}
       <View style={styles.container}>
         <Pressable
