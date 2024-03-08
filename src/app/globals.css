@@ -6,10 +6,17 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
@@ -17,6 +24,10 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,

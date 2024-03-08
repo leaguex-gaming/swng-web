@@ -12,6 +12,8 @@ import { googleSignIn, guestLogin } from "@/store/thunks/authentication";
 import { useDispatch, useSelector } from "react-redux";
 import { useGoogleLogin } from "@react-oauth/google";
 import Marquee from "@/components/common/Marquee";
+import GoogleLogo from "../../../public/svg/GoogleLogo";
+import MyButton from "@/components/common/MyButton";
 
 const GoogleAuth = () => {
   const [loading, setLoading] = useState(false);
@@ -46,14 +48,19 @@ const GoogleAuth = () => {
       <Image width={windowMaxWidth} height={"100%"} src={Bg} />
 
       <View style={styles.container}>
-        <Pressable
+        <MyButton
+          label={"Go in with google"}
+          backgroundColor={buttonGoogle.dark}
+          mv={10}
           onPress={() => {
             onGoogleSignin();
-          }}>
-          <MyText buttonText textTransform={"uppercase"}>
-            Go in with google
-          </MyText>
-        </Pressable>
+          }}
+          loading={googleSignInLoading}
+          disabled={guestLoginLoading ? true : false}
+          width={windowMaxWidth - 80}
+          buttonColor="white"
+          iconComponent={<GoogleLogo style={{ marginRight: 5 }} />}
+        />
 
         <View style={styles.guestChoice}>
           <MyText paragraphText>Want to see first?</MyText>
