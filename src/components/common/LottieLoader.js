@@ -3,8 +3,9 @@
 import React from "react";
 // import Lottie from "react-lottie";
 import Loader from "../../../public/lottie/sports-ball-loader.json";
-import Clap from "../../../public/images/clapping-hands.png";
-import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 
 export const LottieView = ({
   lottieRef,
@@ -22,9 +23,11 @@ export const LottieView = ({
     },
   };
 
-  return <Image width={50} height={50} src={Clap} style={style} />;
+  return (
+    // <Image width={50} height={50} src={Clap} style={style} />;
 
-  // <Lottie options={defaultOptions} ref={lottieRef} style={style} />;
+    <Lottie options={defaultOptions} ref={lottieRef} style={style} />
+  );
 };
 
 const LottieLoader = ({ width = 50, height = 50 }) => {
