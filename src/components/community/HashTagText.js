@@ -272,4 +272,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default memo(HashTagText);
+HashTagText.displayName = "HashTagText";
+
+export default HashTagText;

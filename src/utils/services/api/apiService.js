@@ -30,7 +30,6 @@ ApiService.interceptors.response.use(
 
 ApiService.interceptors.request.use(
   (config) => {
-    let [key, value] = document.cookie.split("=");
     let accessToken = getCookie("accessToken");
 
     config.headers["x-access-token"] = `${accessToken}`;
