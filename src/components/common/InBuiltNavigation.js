@@ -3,10 +3,10 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native-web";
 import Back from "../../../public/svg/Back";
-// import QuestionMark from "../../assets/SvgComponent/QuestionMark";
-// import MoreVertical from "../../assets/SvgComponent/MoreVertical";
-// import Close from "../../assets/SvgComponent/Close";
-// import SettingsIcon from "../../assets/SvgComponent/bottomNav/SettingsIcon";
+import QuestionMark from "../../../public/svg/QuestionMark";
+import MoreVertical from "../../../public/svg/MoreVertical";
+import Close from "../../../public/svg/Close";
+import SettingsIcon from "../../../public/svg/bottomNav/SettingsIcon";
 import { windowMaxWidth } from "../../constants/DeviceData";
 import Polygon from "../../../public/svg/Polygon";
 
