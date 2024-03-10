@@ -27,6 +27,7 @@ export const metadata = {
     "Create an account or log in to Swng - A simple, fun & creative way to share photos, videos & messages with your sport friends & family.",
   keywords:
     "Swng,Sports,Sport Feeds,Cricket,Football,Kabaddi,Tennis,Hockey,MMA",
+  verification: { google: "Bv5OHIK_ACE81EtpZddZb5EcunTKTPtBK4bbgUDj1_k" },
 
   openGraph: {
     title: "Swng - for the love of sports",
