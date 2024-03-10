@@ -6,7 +6,7 @@ const LoadingScreen = () => {
   return (
     // <MyBackground>
     <View style={styles.container}>
-      <LottieLoader width={150} height={150} />
+      {/* <LottieLoader width={150} height={150} /> */}
     </View>
     // </MyBackground>
   );

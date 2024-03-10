@@ -281,7 +281,7 @@ const Feed = () => {
       }>
       {posts?.[currentTopicId]?.posts === undefined ? (
         <View style={styles.fullScreenloaderContainer}>
-          <LottieLoader width={150} height={150} />
+          {/* <LottieLoader width={150} height={150} /> */}
         </View>
       ) : (
         <View style={styles.mainContainer}>
@@ -323,7 +323,7 @@ const Feed = () => {
 
           {getPostsThunkLoading && (
             <View style={styles.loaderContainer}>
-              <LottieLoader width={50} height={50} />
+              {/* <LottieLoader width={50} height={50} /> */}
             </View>
           )}
 

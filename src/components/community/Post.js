@@ -256,13 +256,13 @@ const Post = (props) => {
             <>
               {usersFollowLoading && user_id === usersFollowId ? (
                 <View style={styles.loading}>
-                  <LottieView
+                  {/* <LottieView
                     style={styles.lottieContainer}
                     source={require("../../../public/lottie/mini_loader.json")}
                     autoPlay={true}
                     loop={true}
                     resizeMode="cover"
-                  />
+                  /> */}
                 </View>
               ) : (
                 <Pressable onPress={() => onUserFollow()}>

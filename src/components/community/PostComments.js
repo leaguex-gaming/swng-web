@@ -176,17 +176,6 @@ const Comment = (props) => {
       if (is_guest) {
         dispatch(updateSignupFrom("clap"));
       } else {
-        if (!user_has_liked) {
-          if (PlatformOS !== "web") {
-            clapSt?.play((success, info) => {
-              if (success) {
-              } else {
-              }
-            });
-          } else {
-            // play();
-          }
-        }
         await dispatch(
           likeCommentThunk({
             postId: post_id,
@@ -204,17 +193,6 @@ const Comment = (props) => {
       if (is_guest) {
         dispatch(updateSignupFrom("clap"));
       } else {
-        if (!comment?.user_has_liked) {
-          if (PlatformOS !== "web") {
-            clapSt?.play((success, info) => {
-              if (success) {
-              } else {
-              }
-            });
-          } else {
-            play();
-          }
-        }
         await dispatch(
           likeCommentThunk({
             postId: comment?.post_id,
@@ -680,7 +658,7 @@ const PostComments = ({
 
       {getCommentsLoading && fullScreenPost && (
         <View style={styles.loaderContainer}>
-          <LottieLoader width={50} height={50} />
+          {/* <LottieLoader width={50} height={50} /> */}
         </View>
       )}
     </View>

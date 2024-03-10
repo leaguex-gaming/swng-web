@@ -30,17 +30,19 @@ import AnalyticsIcon from "../../../public/svg/community/AnalyticsIcon";
 import { getPostScore } from "@/utils/helpers/getPostScore";
 // import { logEvent } from "../../utils/events";
 import { ShareToSocial } from "../../utils/helpers/ShareToSocial";
-
+import Image from "next/image";
+import ClappingHands from "../../../public/images/clapping-hands.png";
 const opacity = 0.5;
 
 const ClapLottie = ({ lottieRef }) => {
   return (
-    <LottieView
-      source={require("../../../public/lottie/clap.json")}
-      style={{ width: 35, height: 35 }}
-      autoPlay={true}
-      lottieRef={lottieRef}
-    />
+    // <LottieView
+    //   source={require("../../../public/lottie/clap.json")}
+    //   style={{ width: 35, height: 35 }}
+    //   autoPlay={true}
+    //   lottieRef={lottieRef}
+    // />
+    <Image width={50} height={50} src={ClappingHands} />
   );
 };
 
@@ -81,12 +83,13 @@ const Clap = ({
       </View>
 
       {loading ? (
-        <LottieView
-          style={styles.lottieContainer}
-          source={require("../../../public/lottie/mini_loader.json")}
-          autoPlay={true}
-          loop={true}
-        />
+        // <LottieView
+        //   style={styles.lottieContainer}
+        //   source={require("../../../public/lottie/mini_loader.json")}
+        //   autoPlay={true}
+        //   loop={true}
+        // />
+        <ClapLottie />
       ) : (
         <MyText fontSize={fontSize} opacity={opacity}>
           {count}
@@ -115,12 +118,13 @@ export const Comment = ({
       <CommentIcon opacity={opacity} width={iconSize} height={iconSize} />
 
       {loading ? (
-        <LottieView
-          style={styles.lottieContainer}
-          source={require("../../../public/lottie/mini_loader.json")}
-          autoPlay={true}
-          loop={true}
-        />
+        // <LottieView
+        //   style={styles.lottieContainer}
+        //   source={require("../../../public/lottie/mini_loader.json")}
+        //   autoPlay={true}
+        //   loop={true}
+        // />
+        <></>
       ) : (
         <MyText ml={4} fontSize={fontSize} opacity={opacity}>
           {count}
