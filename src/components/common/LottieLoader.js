@@ -1,30 +1,44 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Loader from "../../../public/lottie/sports-ball-loader.json";
 import dynamic from "next/dynamic";
-import lottie from "lottie-web";
 
-const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
+const Lottie = dynamic(
+  () =>
+    import("@lottiefiles/react-lottie-player").then((module) => module.Player),
+  {
+    ssr: false,
+  }
+);
 
 export const LottieView = ({
+  lottieRef,
   source = Loader,
   loop = false,
   style = { width: "100%", height: "100%" },
   autoPlay = true,
 }) => {
-  const container = useRef(null);
+  const defaultOptions = {
+    loop: loop,
+    autoplay: autoPlay,
+    animationData: source,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
-  useEffect(() => {
-    lottie.loadAnimation({
-      container: container.current,
-      animationData: source,
-      loop: loop,
-      autoplay: autoPlay,
-    });
-  }, [source]);
-
-  return <div ref={container} style={style}></div>;
+  return (
+    // <Image width={50} height={50} src={Clap} style={style} />;
+    <Lottie
+      ref={lottieRef}
+      src={source}
+      style={{ height: "300px", width: "300px" }}
+      autoplay
+      keepLastFrame
+      loop
+    />
+  );
 };
 
 const LottieLoader = ({ width = 50, height = 50 }) => {
