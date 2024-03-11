@@ -45,7 +45,13 @@ const GoogleAuth = () => {
         <Marquee marqueeText={"Sports fans unite."} />
       </View>
 
-      <Image width={windowMaxWidth} height={"100%"} src={Bg} />
+      <Image
+        width={windowMaxWidth}
+        height={"100%"}
+        src={Bg}
+        alt="swng-login"
+        priority={true}
+      />
 
       <View style={styles.container}>
         <MyButton

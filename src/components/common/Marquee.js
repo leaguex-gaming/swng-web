@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native-web";
 import { marqueeColor } from "../../constants/theme/colors";
 import MarqueeText from "./MarqueeText";
@@ -11,27 +11,31 @@ const Marquee = ({
   marqueeTextColor = marqueeColor,
   ...props
 }) => {
+  const [rendered, setRendered] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setRendered(true);
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <View style={styles.container}>
-      <MarqueeText
-        style={[styles.marqueeText, { color: marqueeTextColor }]}
-        marqueeOnStart={true}
-        duration={marqueeDuration(marqueeText)}
-        loop
-        scroll={false}
-        // repeatSpacer={100}
-        animationType={"scroll"}
-        {...props}>
-        <Text>{marqueeText}</Text>
-      </MarqueeText>
-      {/* <MarqueeText
-        style={[styles.marqueeText, {color: marqueeTextColor}]}
-        speed={1}
-        marqueeOnStart={true}
-        loop={true}
-        consecutive={true}>
-        {marqueeText}
-      </MarqueeText> */}
+      {rendered && (
+        <MarqueeText
+          style={[styles.marqueeText, { color: marqueeTextColor }]}
+          marqueeOnStart={true}
+          duration={marqueeDuration(marqueeText)}
+          loop
+          scroll={false}
+          // repeatSpacer={100}
+          animationType={"scroll"}
+          {...props}>
+          <Text>{marqueeText}</Text>
+        </MarqueeText>
+      )}
     </View>
   );
 };

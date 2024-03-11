@@ -25,7 +25,7 @@ function ButtonBGFull({
         x2="289.406"
         y2="24.2192"
         stroke="black"
-        stroke-opacity="0.1"
+        strokeOpacity="0.1"
       />
       <defs>
         <linearGradient
@@ -35,8 +35,8 @@ function ButtonBGFull({
           x2="142.265"
           y2="47.4009"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color={color} />
-          <stop offset="1" stop-color={color} />
+          <stop stopColor={color} />
+          <stop offset="1" stopColor={color} />
         </linearGradient>
       </defs>
     </svg>
