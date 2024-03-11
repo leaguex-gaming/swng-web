@@ -33,7 +33,7 @@ export const LottieView = ({
     <Lottie
       ref={lottieRef}
       src={source}
-      style={{ height: "300px", width: "300px" }}
+      style={style}
       autoplay
       keepLastFrame
       loop
