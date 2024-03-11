@@ -192,7 +192,7 @@ const PostInfo = ({ postId, currentTopicId = 0, fromDeepLink = false }) => {
               keyboardShouldPersistTaps={"handled"}>
               {loading ? (
                 <View style={styles.loadingContainer}>
-                  {/* <LottieLoader /> */}
+                  <LottieLoader />
                 </View>
               ) : (
                 <>

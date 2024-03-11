@@ -36,13 +36,12 @@ const opacity = 0.5;
 
 const ClapLottie = ({ lottieRef }) => {
   return (
-    // <LottieView
-    //   source={require("../../../public/lottie/clap.json")}
-    //   style={{ width: 35, height: 35 }}
-    //   autoPlay={true}
-    //   lottieRef={lottieRef}
-    // />
-    <Image width={50} height={50} src={ClappingHands} />
+    <LottieView
+      source={require("../../../public/lottie/clap.json")}
+      style={{ width: 35, height: 35 }}
+      autoPlay={true}
+      lottieRef={lottieRef}
+    />
   );
 };
 
@@ -83,13 +82,12 @@ const Clap = ({
       </View>
 
       {loading ? (
-        // <LottieView
-        //   style={styles.lottieContainer}
-        //   source={require("../../../public/lottie/mini_loader.json")}
-        //   autoPlay={true}
-        //   loop={true}
-        // />
-        <ClapLottie />
+        <LottieView
+          style={styles.lottieContainer}
+          source={require("../../../public/lottie/mini_loader.json")}
+          autoPlay={true}
+          loop={true}
+        />
       ) : (
         <MyText fontSize={fontSize} opacity={opacity}>
           {count}
@@ -118,13 +116,12 @@ export const Comment = ({
       <CommentIcon opacity={opacity} width={iconSize} height={iconSize} />
 
       {loading ? (
-        // <LottieView
-        //   style={styles.lottieContainer}
-        //   source={require("../../../public/lottie/mini_loader.json")}
-        //   autoPlay={true}
-        //   loop={true}
-        // />
-        <></>
+        <LottieView
+          style={styles.lottieContainer}
+          source={require("../../../public/lottie/mini_loader.json")}
+          autoPlay={true}
+          loop={true}
+        />
       ) : (
         <MyText ml={4} fontSize={fontSize} opacity={opacity}>
           {count}

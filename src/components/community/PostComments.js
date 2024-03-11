@@ -658,7 +658,7 @@ const PostComments = ({
 
       {getCommentsLoading && fullScreenPost && (
         <View style={styles.loaderContainer}>
-          {/* <LottieLoader width={50} height={50} /> */}
+          <LottieLoader width={50} height={50} />
         </View>
       )}
     </View>
