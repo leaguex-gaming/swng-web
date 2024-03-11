@@ -100,7 +100,10 @@ const MyButton = ({
           </Pressable>
         ) : (
           <LottieView
-            style={styles.lottieContainer}
+            style={StyleSheet.flatten([
+              styles.lottieContainer,
+              { left: width / 2 - 50 },
+            ])}
             source={require("../../../public/lottie/btn-loader.json")}
             autoPlay={true}
             loop={true}
@@ -140,7 +143,8 @@ const styles = StyleSheet.create({
   lottieContainer: {
     position: "absolute",
     width: 100,
-    height: 25,
+    height: 50,
+    top: 0,
   },
 });
 

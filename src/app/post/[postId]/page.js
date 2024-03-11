@@ -20,7 +20,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
     openGraph: {
       title: `${res.posts.topic.name} . Swng photos and videos`,
       description: `Swng photos and videos .  ${res.posts.content}`,
-      type: "Article",
+      type: "article",
       url: "https://www.swng.fan/",
       images: [
         {
