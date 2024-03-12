@@ -9,7 +9,7 @@ import { BackButton } from "@/components/common/InBuiltNavigation";
 import UserCard from "@/components/common/UserCard";
 import { useDispatch } from "react-redux";
 import { getPostById } from "@/store/thunks/community";
-import { windowMaxWidth, windowWidth } from "@/constants/DeviceData";
+import { windowMaxWidth } from "@/constants/DeviceData";
 import { getPostScore } from "@/utils/helpers/getPostScore";
 import AnalyticsIcon from "../../../../public/svg/community/AnalyticsIcon";
 import MyTextLink from "@/components/common/MyTextLink";
@@ -64,7 +64,7 @@ const PostAnalytics = ({ params }) => {
       <View
         style={{
           paddingHorizontal: 16,
-          width: windowWidth,
+          width: windowMaxWidth,
           alignSelf: "center",
         }}>
         <View

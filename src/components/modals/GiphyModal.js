@@ -15,24 +15,6 @@ import {
   SearchContext, // the context that wraps and connects our components
 } from "@giphy/react-components";
 
-export const customStyles = {
-  overlay: {
-    backgroundColor: "transparent",
-  },
-  content: {
-    width: windowMaxWidth,
-    height: 160,
-    left: "50%",
-    top: window.innerHeight - 160,
-    transform: "translate(-50%, 0)",
-    bottom: 0,
-    padding: 0,
-    border: 0,
-    background: postBackground[theme],
-    borderRadius: 0,
-  },
-};
-
 const GiphyModal = ({ modalizeRef }) => {
   const { fetchGifs, searchKey } = useContext(SearchContext);
   const [rendered, setRendered] = useState(false);

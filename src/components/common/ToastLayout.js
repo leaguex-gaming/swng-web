@@ -1,3 +1,5 @@
+"use client";
+
 import { windowMaxWidth, windowMaxHeight } from "@/constants/DeviceData";
 import { Pressable, View } from "react-native-web";
 import MyButton from "@/components/common/MyButton";
