@@ -1,0 +1,43 @@
+.Toastify__toast {
+  padding: 0;
+  margin-bottom: 0;
+  min-height: 0;
+  height: 90px;
+  border-radius: 0;
+}
+
+.Toastify__toast-container--top-right {
+  right: calc((100vw - 500px) / 2);
+}
+
+.Toastify__toast-container {
+  padding: 0;
+}
+
+.Toastify__toast-body {
+  margin: 0;
+  padding: 0;
+}
+
+.Toastify__progress-bar {
+  border-bottom-left-radius: 0;
+}
+
+:root {
+  --toastify-color-light: linear-gradient(to bottom, #0e3d0b, #1e5f07);
+  --toastify-color-dark: linear-gradient(to bottom, #0e3d0b, #1e5f07);
+  --toastify-color-info: linear-gradient(to bottom, #0e3d0b, #1e5f07);
+  --toastify-color-success: linear-gradient(to bottom, #0e3d0b, #1e5f07);
+  --toastify-color-warning: linear-gradient(to bottom, #0e3d0b, #1e5f07);
+  --toastify-color-error: linear-gradient(to bottom, #0e3d0b, #1e5f07);
+
+  --toastify-toast-width: 500px;
+  --toastify-toast-top: 0;
+
+  --toastify-color-progress-light: #ffffff;
+  --toastify-color-progress-dark: #ffffff;
+  --toastify-color-progress-info: #ffffff;
+  --toastify-color-progress-success: #ffffff;
+  --toastify-color-progress-warning: #ffffff;
+  --toastify-color-progress-error: #ffffff;
+}

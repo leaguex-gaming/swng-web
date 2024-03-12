@@ -31,7 +31,6 @@ import {
   GET_RECOMMENDED_USERS,
   GET_RECOMMENDED_POSTS,
 } from "../../constants/endpoints/community-endpoints";
-// import Toast from "react-native-toast-message";
 import { generateVideoThumbnails } from "@rajesh896/video-thumbnails-generator";
 import {
   addComment,
@@ -62,6 +61,7 @@ import {
   REELS_API_CALL_PAGE_SIZE,
 } from "../../constants/StaticData";
 import { redirect } from "next/navigation";
+import { notify, warning } from "@/components/common/ToastLayout";
 
 export const getPostsThunk = createAsyncThunk(
   "communitySlice/getPostsThunk",
@@ -292,9 +292,7 @@ export const createPostThunk = createAsyncThunk(
 
         thunkAPI.dispatch(updateApiLoading({ loading: false, content: "" }));
 
-        Toast.show({
-          type: "notify",
-          visibilityTime: 5000,
+        notify({
           props: {
             profile_pic: payload?.notify_profile_pic,
             post_id: response?.data?.post?.id,
@@ -382,9 +380,7 @@ export const createPostThunk = createAsyncThunk(
         }
 
         if (newPayload?.media_type !== "video") {
-          Toast.show({
-            type: "notify",
-            visibilityTime: 5000,
+          notify({
             props: {
               profile_pic: payload?.notify_profile_pic,
               post_id: response?.data?.post?.id,
@@ -400,9 +396,7 @@ export const createPostThunk = createAsyncThunk(
             .community.posts[0].posts.slice(0, 10);
           await storeDataToAsyncStorage("posts", temporaryPosts);
         } else {
-          Toast.show({
-            type: "warning",
-            visibilityTime: 5000,
+          warning({
             props: {
               message:
                 "Your video is being processed. It will be available shortly.",
@@ -676,11 +670,9 @@ export const deletePost = createAsyncThunk(
           .getState()
           .community.posts[0].posts.slice(0, 10);
 
-        await storeDataToAsyncStorage("posts", temporaryPosts);
+        // await storeDataToAsyncStorage("posts", temporaryPosts);
 
-        Toast.show({
-          type: "notify",
-          visibilityTime: 5000,
+        notify({
           props: {
             profile_pic: payload?.notify_profile_pic,
             name: payload?.notify_title,
@@ -722,11 +714,9 @@ export const reportPost = createAsyncThunk(
           .getState()
           .community.posts[0].posts.slice(0, 10);
 
-        await storeDataToAsyncStorage("posts", temporaryPosts);
+        // await storeDataToAsyncStorage("posts", temporaryPosts);
 
-        Toast.show({
-          type: "warning",
-          visibilityTime: 5000,
+        warning({
           props: {
             message: "Post was reported successfully",
           },
@@ -735,6 +725,7 @@ export const reportPost = createAsyncThunk(
         throw response;
       }
     } catch (err) {
+      console.log(err);
       errorToast(err);
 
       return thunkAPI.rejectWithValue(err.response.data);
@@ -831,9 +822,7 @@ export const usersFollow = createAsyncThunk(
           })
         );
         if (action === "ADD") {
-          Toast.show({
-            type: "notify",
-            visibilityTime: 5000,
+          notify({
             props: {
               profile_pic: userPic,
               user_id: userId,

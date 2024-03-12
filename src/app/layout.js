@@ -3,6 +3,9 @@ import "./globals.css";
 import { Providers } from "./provider";
 import { cookies } from "next/headers";
 import Modals from "@/components/modals/Modals";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./../components/common/toast.css";
 
 const jaguar = localFont({
   src: "../../public/fonts/Jaguar.ttf",
@@ -60,6 +63,7 @@ export default function RootLayout({ children, authentication }) {
             {!userToken && authentication}
             {children}
             <Modals />
+            <ToastContainer autoClose={5000} closeButton={false} />
           </Providers>
         </div>
       </body>

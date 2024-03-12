@@ -22,6 +22,7 @@ import {
 } from "@/store/slices/common-slice";
 import ReportIcon from "../../../public/svg/community/ReportIcon";
 import { customStyles } from "./utils";
+import { successnotifies } from "../common/ToastLayout";
 
 const OptionsModalize = ({ modalizeRef }) => {
   const dispatch = useDispatch();
@@ -47,13 +48,12 @@ const OptionsModalize = ({ modalizeRef }) => {
         //     `${DEEPLINK_NORMAL_POST_URL}?postId=${moreOptionsPost.id}&mediaType=${moreOptionsPost?.media_type}`
         //   );
         // }
-        // Toast.show({
-        //   type: "successnotifies",
-        //   visibilityTime: 2000,
-        //   props: {
-        //     content: "Link Copied Successfully",
-        //   },
-        // });
+
+        successnotifies({
+          props: {
+            content: "Link Copied Successfully",
+          },
+        });
       },
       icon: <CopyLink />,
     },
