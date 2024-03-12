@@ -1,11 +1,9 @@
-"use client";
-
 import { windowMaxWidth, windowMaxHeight } from "@/constants/DeviceData";
 import { Pressable, View } from "react-native-web";
 import MyButton from "@/components/common/MyButton";
 import { ProfilePic } from "@/components/community/ProfileCard";
 import MyText from "@/components/common/MyText";
-import store from "@/store/store";
+// import store from "@/store/store";
 import { updateDeeplinkURL } from "@/store/slices/common-slice";
 import { black, white } from "@/constants/theme/colors";
 import { updateNotificationViewedThunk } from "@/store/thunks/community";
@@ -56,9 +54,9 @@ export const notify = ({ props }) => {
             mv={10}
             onPress={async () => {
               if (props?.notificationId) {
-                store.dispatch(
-                  updateNotificationViewedThunk([props?.notificationId])
-                );
+                // store.dispatch(
+                //   updateNotificationViewedThunk([props?.notificationId])
+                // );
               }
               if (props.deep_link) {
                 if (props?.post_id) {
@@ -66,15 +64,15 @@ export const notify = ({ props }) => {
                     props?.media_type === "video"
                       ? DEEPLINK_REELS_URL
                       : DEEPLINK_NORMAL_POST_URL;
-                  store.dispatch(
-                    updateDeeplinkURL(
-                      `${BASE_URL}?postId=${props?.post_id}&mediaType=${props?.media_type}`
-                    )
-                  );
+                  // store.dispatch(
+                  //   updateDeeplinkURL(
+                  //     `${BASE_URL}?postId=${props?.post_id}&mediaType=${props?.media_type}`
+                  //   )
+                  // );
                 } else if (props?.user_id) {
-                  store.dispatch(
-                    updateDeeplinkURL(`navUserId=${props?.user_id}`)
-                  );
+                  // store.dispatch(
+                  //   updateDeeplinkURL(`navUserId=${props?.user_id}`)
+                  // );
                 }
               } else {
                 if (props.type === "FOLLOW") {
