@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, TextInput, Pressable } from "react-native-web";
+import { StyleSheet, View, Pressable } from "react-native-web";
 import MyText from "../common/MyText";
 import { useDispatch, useSelector } from "react-redux";
 import { postCommentThunk } from "@/store/thunks/community";
@@ -10,14 +12,13 @@ import {
   updateGifModalVisible,
   updateSignupFrom,
 } from "@/store/slices/common-slice";
-import { GIPHY_KEY } from "../../constants/StaticData";
 import {
   updateGiphyCommentMediaURL,
   updateGiphyCommentPostId,
 } from "@/store/slices/community-slice";
-// import MentionModal from "./MentionModal";
 import { getFilteredMentionedUsers } from "@/utils/helpers/helper";
 import { debounce } from "lodash";
+import MentionModal from "../modals/MentionModal";
 
 const CommentInput = ({
   postId = 1,
@@ -46,6 +47,7 @@ const CommentInput = ({
   const [mentionText, setMentionText2] = useState("");
 
   const [loading, setLoading] = useState(false);
+  const [showMentionModal, setShowMentionModal] = useState(false);
 
   const onCommentSend = async () => {
     try {
@@ -145,11 +147,22 @@ const CommentInput = ({
     }
   }, [replyToSpecificPerson]);
 
+  useEffect(() => {
+    if (mentionText) {
+      setShowMentionModal(true);
+    } else {
+      setShowMentionModal(false);
+    }
+  }, [mentionText]);
+
   return (
     <>
-      {fullScreenPost && (
-        // <MentionModal search={mentionText} onUserPress={selectUser} />
-        <></>
+      {fullScreenPost && showMentionModal && (
+        <MentionModal
+          fullScreenPost={true}
+          search={mentionText}
+          onUserPress={selectUser}
+        />
       )}
       <View style={styles.container}>
         <Pressable

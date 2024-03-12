@@ -31,6 +31,7 @@ import DoubleTapHandler from "./DoubleTapHandler";
 // import MentionModal from "./MentionModal";
 import useSound from "use-sound";
 import { useRouter } from "next/navigation";
+import MentionModal from "../modals/MentionModal";
 // import clapaud from "../../../public/audio/clapaud.mp3";
 
 const FollowsTag = ({ follwedby }) => {
@@ -99,6 +100,7 @@ const Post = (props) => {
     fullScreenPost ? true : false
   );
   const [focusedInput, setFocusedInput] = useState(null);
+  const [showMentionModal, setShowMentionModal] = useState(false);
 
   //--------------------------------------------------refs---------------------------------------------------//
   const postCommentInputRef = useRef(null);
@@ -130,6 +132,14 @@ const Post = (props) => {
       postCommentInputRef?.current?.blur();
     }
   }, [keyboardShown]);
+
+  useEffect(() => {
+    if (mentionText) {
+      setShowMentionModal(true);
+    } else {
+      setShowMentionModal(false);
+    }
+  }, [mentionText]);
 
   //--------------------------------------onPress Actions and Functions----------------------------------------//
   const viewPost = throttle(async () => {
@@ -363,12 +373,15 @@ const Post = (props) => {
                 handleFocus={handleFocus}
                 post={props}
               />
-              {/* {!fullScreenPost && showComments && focusedInput && (
-                <MentionModal
-                  search={mentionText}
-                  onUserPress={selectUser}
-                  style={{ top: 60 }}></MentionModal>
-              )} */}
+              {!fullScreenPost &&
+                showComments &&
+                focusedInput &&
+                showMentionModal && (
+                  <MentionModal
+                    search={mentionText}
+                    onUserPress={selectUser}
+                    style={{ top: 60 }}></MentionModal>
+                )}
             </>
           )}
         </View>

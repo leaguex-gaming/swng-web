@@ -3,7 +3,7 @@
 const { windowMaxWidth } = require("@/constants/DeviceData");
 const { postBackground, theme } = require("@/constants/theme/colors");
 
-export const customStyles = (modalHeight) => {
+export const customStyles = (modalHeight, bottom = 0) => {
   return {
     overlay: {
       backgroundColor: "transparent",
@@ -12,9 +12,9 @@ export const customStyles = (modalHeight) => {
       width: windowMaxWidth,
       height: modalHeight,
       left: "50%",
-      top: window.innerHeight - modalHeight,
+      top: window.innerHeight - modalHeight - bottom,
       transform: "translate(-50%, 0)",
-      bottom: 0,
+      bottom: bottom,
       padding: 0,
       border: 0,
       background: postBackground[theme],
