@@ -1,5 +1,3 @@
-"use client";
-
 import { createSlice } from "@reduxjs/toolkit";
 import {
   deletePost,
@@ -54,6 +52,7 @@ const initialState = {
   getPostByIdLoading: false,
   createPostLoading: false,
   giphyCommentPostId: "",
+  giphyCommentMediaURL: "",
   reportPostLoading: false,
   notificationHistory: {},
   seed: undefined,
@@ -612,6 +611,9 @@ const communitySlice = createSlice({
     updateGiphyCommentPostId(state, action) {
       state.giphyCommentPostId = action.payload;
     },
+    updateGiphyCommentMediaURL(state, action) {
+      state.giphyCommentMediaURL = action.payload;
+    },
     updateNotificationHistory(state, action) {
       state.notificationHistory = {
         ...state.notificationHistory,
@@ -906,6 +908,7 @@ export const {
   updateSpecificUserPosts,
   updateUserProfile,
   updateGiphyCommentPostId,
+  updateGiphyCommentMediaURL,
   updateNotificationHistory,
   updateShareCount,
   updateSeed,

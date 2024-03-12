@@ -29,14 +29,13 @@ export const LottieView = ({
   };
 
   return (
-    // <Image width={50} height={50} src={Clap} style={style} />;
     <Lottie
       ref={lottieRef}
       src={source}
       style={style}
-      autoplay
+      autoplay={autoPlay}
       keepLastFrame
-      loop
+      loop={loop}
     />
   );
 };

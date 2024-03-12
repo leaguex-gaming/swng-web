@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./provider";
 import { cookies } from "next/headers";
+import Modals from "@/components/modals/Modals";
 
 const jaguar = localFont({
   src: "../../public/fonts/Jaguar.ttf",
@@ -58,6 +59,7 @@ export default function RootLayout({ children, authentication }) {
           <Providers>
             {!userToken && authentication}
             {children}
+            <Modals />
           </Providers>
         </div>
       </body>

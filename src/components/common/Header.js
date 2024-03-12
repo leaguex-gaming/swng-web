@@ -22,7 +22,7 @@ const Header = ({
             backgroundColor: backgroundColor,
           },
         ]}></View>
-      <View style={[styles.flex, styles.flexDirectionRow]}>
+      <View style={[styles.flex, styles.flexLeftDirectionRow]}>
         {leftComponent}
         <View style={styles.flex}></View>
       </View>
@@ -57,6 +57,10 @@ const styles = StyleSheet.create({
   },
   flex: {
     flex: 1,
+  },
+  flexLeftDirectionRow: {
+    flexDirection: "row",
+    marginLeft: -5,
   },
   flexDirectionRow: {
     flexDirection: "row",

@@ -26,7 +26,7 @@ const MyButton = ({
   debounceTime = 1000,
   debounceFunc = true,
   disabledStatePressAction = () => {},
-  backgroundColor,
+  backgroundColor = "white",
   buttonColor = "black",
   iconComponent = null,
   disableOpacity = 0.3,

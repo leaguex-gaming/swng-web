@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
+    "@giphy/react-components": "^9.3.0",
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "@mui/icons-material": "^5.15.12",
     "@rajesh896/video-thumbnails-generator": "^2.3.9",
@@ -24,6 +25,7 @@
     "prop-types": "^15.8.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-modal": "^3.16.1",
     "react-native-web": "^0.19.10",
     "react-player": "^2.15.1",
     "react-redux": "^9.1.0",

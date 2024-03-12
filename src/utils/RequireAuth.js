@@ -10,7 +10,6 @@ export default function RequireAuth({ children }) {
 
   useEffect(() => {
     if (!accessToken) push("/");
-    else push("/feed");
   }, [accessToken]);
 
   return <>{children}</>;
