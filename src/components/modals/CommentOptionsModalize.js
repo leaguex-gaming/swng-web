@@ -2,8 +2,6 @@
 
 import React from "react";
 import { View, StyleSheet, Pressable } from "react-native-web";
-// import { Modalize } from "react-native-modalize";
-// import { LinearGradientBackground } from "../common/MyBackground";
 import MyText from "../common/MyText";
 import Delete from "../../../public/svg/community/Delete";
 import CopyLink from "../../../public/svg/community/CopyLink";
@@ -16,6 +14,8 @@ import {
   updateCommentMoreOptions,
 } from "@/store/slices/common-slice";
 import ReportIcon from "../../../public/svg/community/ReportIcon";
+import Modal from "react-modal";
+import { customStyles } from "./utils";
 
 const CommentOptionsModalize = ({ modalizeRef }) => {
   const dispatch = useDispatch();
@@ -53,7 +53,6 @@ const CommentOptionsModalize = ({ modalizeRef }) => {
       <Pressable
         onPress={() => {
           item.onClick();
-          modalizeRef?.current?.close();
         }}
         style={{
           paddingVertical: 15,
@@ -75,9 +74,9 @@ const CommentOptionsModalize = ({ modalizeRef }) => {
   };
 
   return (
-    <Modalize
-      ref={modalizeRef}
-      onClose={() =>
+    <Modal
+      isOpen={() => {}}
+      onRequestClose={() =>
         dispatch(
           updateCommentMoreOptions({
             show: false,
@@ -85,27 +84,23 @@ const CommentOptionsModalize = ({ modalizeRef }) => {
           })
         )
       }
-      adjustToContentHeight={true}
-      handleStyle={{ height: 0 }}>
-      <LinearGradientBackground colors={["#525252", "#525252"]}>
-        <View>
-          <View style={{ marginHorizontal: 15 }}>
-            <MyText fontSize={16} mv={20}>
-              More actions for this comment
-            </MyText>
-          </View>
-
-          {options?.map((item, index) => {
-            return (
-              <RenderItem item={OptionsObj[item]} index={index} key={index} />
-            );
-          })}
+      shouldCloseOnOverlayClick={true}
+      style={customStyles(110)}>
+      <View>
+        <View style={{ marginHorizontal: 15 }}>
+          <MyText fontSize={16} mv={20}>
+            More actions for this comment
+          </MyText>
         </View>
-      </LinearGradientBackground>
-    </Modalize>
+
+        {options?.map((item, index) => {
+          return (
+            <RenderItem item={OptionsObj[item]} index={index} key={index} />
+          );
+        })}
+      </View>
+    </Modal>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default CommentOptionsModalize;

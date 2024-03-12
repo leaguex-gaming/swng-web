@@ -11,7 +11,7 @@ import { useRef } from "react";
 import DeleteModalize from "./DeleteModalize";
 import ReportModalize from "./ReportModal";
 import OptionsModalize from "./OptionsModalize";
-// import CommentOptionsModalize from "./CommentOptionsModalize";
+import CommentOptionsModalize from "./CommentOptionsModalize";
 
 function Modals() {
   const dispatch = useDispatch();
@@ -38,6 +38,7 @@ function Modals() {
   const gifModalizeRef = useRef();
   const commentMoreOptionsRef = useRef(null);
 
+  console.log(showCommentMoreOptions);
   return (
     <>
       {showPostMoreOptions && (
@@ -46,9 +47,11 @@ function Modals() {
         </View>
       )}
 
-      {/* <View style={[styles.modalContainer]}> */}
-      {/* <CommentOptionsModalize modalizeRef={commentMoreOptionsRef} /> */}
-      {/* </View> */}
+      {showCommentMoreOptions && (
+        <View style={[styles.modalContainer]}>
+          <CommentOptionsModalize modalizeRef={commentMoreOptionsRef} />
+        </View>
+      )}
 
       {gifModalVisible && (
         <View style={[styles.modalContainer]}>
