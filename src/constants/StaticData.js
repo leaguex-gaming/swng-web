@@ -2,7 +2,7 @@
 
 import { Platform } from "react-native-web";
 
-export const isProduction = true;
+export const isProduction = false;
 
 export const firebaseWebServerKey =
   "BL-y9iEA4mgbyMtsjdyLUETqeuThofvhZ6TVCHeC5JdpM6bTr3XUz9YakMiwkL4fEEGDSxDSeXQ2YyjksCsyxfA";

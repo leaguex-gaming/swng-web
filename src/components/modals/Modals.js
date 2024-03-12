@@ -11,7 +11,7 @@ import { useRef } from "react";
 import DeleteModalize from "./DeleteModalize";
 import ReportModalize from "./ReportModal";
 import OptionsModalize from "./OptionsModalize";
-import CommentOptionsModalize from "./CommentOptionsModalize";
+// import CommentOptionsModalize from "./CommentOptionsModalize";
 
 function Modals() {
   const dispatch = useDispatch();
@@ -50,13 +50,13 @@ function Modals() {
       {/* <CommentOptionsModalize modalizeRef={commentMoreOptionsRef} /> */}
       {/* </View> */}
 
-      {/* {gifModalVisible && (
+      {gifModalVisible && (
         <View style={[styles.modalContainer]}>
           <SearchContextManager apiKey={GIPHY_KEY}>
-            <GiphyModal modalizeRef={gifModalizeRef} />
+            <GiphyModal />
           </SearchContextManager>
         </View>
-      )} */}
+      )}
 
       {deletePostModalVisible && <DeleteModalize />}
 
@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     width: windowMaxWidth,
-    alignItems: "center",
     height: "100%",
+    justifyContent: "flex-end",
     position: "absolute",
   },
 });
