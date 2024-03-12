@@ -30,7 +30,7 @@ const OptionsModalize = ({ modalizeRef }) => {
   const { id: currentUserId } = useSelector((state) => state.userSlice);
 
   let options = ["CopyLink", "Report"];
-  if (moreOptionsPost.user_id !== currentUserId) {
+  if (moreOptionsPost.user_id === currentUserId) {
     options = ["CopyLink", "Delete"];
   }
 
