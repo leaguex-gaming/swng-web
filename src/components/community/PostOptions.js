@@ -32,6 +32,7 @@ import { getPostScore } from "@/utils/helpers/getPostScore";
 import { ShareToSocial } from "../../utils/helpers/ShareToSocial";
 import Image from "next/image";
 import ClappingHands from "../../../public/images/clapping-hands.png";
+import { useRouter } from "next/navigation";
 const opacity = 0.5;
 
 const ClapLottie = ({ lottieRef }) => {
@@ -180,6 +181,8 @@ const PostOptions = ({
   const dispatch = useDispatch();
   const { is_guest, userId } = useSelector((state) => state.userSlice);
 
+  const router = useRouter();
+
   const optionsOnPress = async (type) => {
     try {
       const isGuest = is_guest;
@@ -251,7 +254,7 @@ const PostOptions = ({
             );
           }
         } else if (type === "analytics") {
-          // rootNavigate("PostAnalytics", "navigate", { post: post });
+          router.push(`/analytics/${post.id}`);
         }
       }
     } catch (err) {

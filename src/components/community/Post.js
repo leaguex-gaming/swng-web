@@ -443,8 +443,8 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   lottieContainer: {
-    width: 100,
-    height: 30,
+    width: 60,
+    height: 60,
     marginRight: -20,
   },
   followedbyContainer: {

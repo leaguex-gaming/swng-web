@@ -571,13 +571,13 @@ const communitySlice = createSlice({
 
       state.userProfile[`uid_${userId}`].total_followers =
         actionType === "ADD"
-          ? state.userProfile[`uid_${userId}`].total_followers + 1
-          : state.userProfile[`uid_${userId}`].total_followers - 1;
+          ? state.userProfile[`uid_${userId}`]?.total_followers + 1
+          : state.userProfile[`uid_${userId}`]?.total_followers - 1;
 
-      state.userProfile[`uid_${myUserId}`].total_followings =
-        actionType === "ADD"
-          ? state.userProfile[`uid_${myUserId}`].total_followings + 1
-          : state.userProfile[`uid_${myUserId}`].total_followings - 1;
+      // state.userProfile[`uid_${myUserId}`].total_followings =
+      //   actionType === "ADD"
+      //     ? state.userProfile[`uid_${myUserId}`]?.total_followings + 1
+      //     : state.userProfile[`uid_${myUserId}`]?.total_followings - 1;
 
       if (actionType !== "ADD") {
         const userIndex = findIndex(
@@ -585,12 +585,12 @@ const communitySlice = createSlice({
           userId
         );
 
-        state.userProfile[`uid_${myUserId}`]?.following.splice(userIndex, 1);
+        // state.userProfile[`uid_${myUserId}`]?.following?.splice(userIndex, 1);
       }
 
       if (fromSuggestion && state?.recommendedUsers?.users?.length) {
         const userIndex = findIndex(state.recommendedUsers.users, userId);
-        state?.recommendedUsers?.users.splice(userIndex, 1);
+        state?.recommendedUsers?.users?.splice(userIndex, 1);
       }
 
       const followedByUser = actionType === "ADD" ? true : false;
