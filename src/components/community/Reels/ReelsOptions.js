@@ -25,7 +25,7 @@ const ReelsOptions = ({
   post = null,
   postClapAction = () => {},
   loading = false,
-  modalizeRef = null,
+  setCommentModal = () => {},
   currentTopicId,
   setviewablePost,
 }) => {
@@ -107,7 +107,7 @@ const ReelsOptions = ({
         //   commentInputRef?.current?.focus();
         // }, 100);
 
-        modalizeRef?.current?.open();
+        setCommentModal(true);
       } else if (type === "share") {
         try {
           const postId = post.user_id === userId ? null : post?.id;

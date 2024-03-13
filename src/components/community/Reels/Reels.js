@@ -14,14 +14,12 @@ import { windowMaxWidth } from "@/constants/DeviceData";
 import CommentModalize from "@/components/modals/CommentModalize";
 
 const Reels = ({ postId, currentTopicId = 0 }) => {
-  //--------------------------------------------------refs---------------------------------------------------//
-  const modalizeRef = useRef(null);
-
   //---------------------------------------------state management------------------------------------------//
   const [viewablePost, setviewablePost] = useState(null);
   const [loading, setLoading] = useState(false);
   const [visibleIndex, setVisibleIndex] = useState(0);
   const [rendered, setRendered] = useState(false);
+  const [commentModal, setCommentModal] = useState(false);
 
   //---------------------------------------------redux store management-------------------------------------//
   const dispatch = useDispatch();
@@ -125,7 +123,7 @@ const Reels = ({ postId, currentTopicId = 0 }) => {
           postId={recommendedPosts[0]?.id}
           currentTopicId={`reels_${postId}`}
           setviewablePost={setviewablePost}
-          modalizeRef={modalizeRef}
+          setCommentModal={setCommentModal}
           postOnScreen={recommendedPosts[visibleIndex]?.id}
         />
         //   )}
@@ -134,15 +132,15 @@ const Reels = ({ postId, currentTopicId = 0 }) => {
         // />
       )}
 
-      {/* {!loading && recommendedPosts?.length && (
+      {!loading && recommendedPosts?.length && commentModal && (
         <CommentModalize
-          modalizeRef={modalizeRef}
-          // post={viewablePost}
+          setCommentModal={setCommentModal}
+          post={recommendedPosts[0]}
           postId={recommendedPosts[0]?.id}
           loading={loading}
           currentTopicId={`reels_${postId}`}
         />
-      )} */}
+      )}
     </View>
   );
 };

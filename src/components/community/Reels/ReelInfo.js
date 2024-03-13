@@ -21,7 +21,7 @@ const ReelInfo = ({
   postId,
   currentTopicId,
   setviewablePost,
-  modalizeRef,
+  setCommentModal,
   index,
   postOnScreen,
 }) => {
@@ -156,7 +156,7 @@ const ReelInfo = ({
           post={post}
           postClapAction={postClapAction}
           loading={loading}
-          modalizeRef={modalizeRef}
+          setCommentModal={setCommentModal}
           currentTopicId={currentTopicId}
           getPostComments={getPostComments}
           setviewablePost={setviewablePost}

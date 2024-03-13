@@ -6,6 +6,7 @@ import { LinearGradientBackground } from "../common/MyBackground";
 import MyText from "../common/MyText";
 import {
   black2,
+  blackOpacity,
   commentBorderColor,
   greyBackgroundColor,
   postBackground,
@@ -22,7 +23,12 @@ import { useSelector } from "react-redux";
 import Modal from "react-modal";
 import { customStyles } from "./utils";
 
-const CommentModalize = ({ modalizeRef, post, loading, currentTopicId }) => {
+const CommentModalize = ({
+  setCommentModal,
+  post,
+  loading,
+  currentTopicId,
+}) => {
   //--------------------------------------------------refs---------------------------------------------------//
   const commentInputRef = useRef(null);
 
@@ -39,6 +45,11 @@ const CommentModalize = ({ modalizeRef, post, loading, currentTopicId }) => {
       (p) => p?.id === Number(post?.id)
     );
   });
+
+  const posts = useSelector((state) => {
+    return state.community;
+  });
+
   const getCommentsLoading = useSelector(
     (state) => state.community.getCommentsLoading
   );
@@ -53,110 +64,128 @@ const CommentModalize = ({ modalizeRef, post, loading, currentTopicId }) => {
 
   //--------------------------------------render ui----------------------------------------//
   return (
-    <Modal
-      isOpen={() => {}}
-      onRequestClose={() => {
+    <Pressable
+      style={styles.outerContainer}
+      onPress={() => {
         setMentionedUser(null);
         setParentId(null);
         setReplyToSpecificPerson(null);
         setDirectReplyTo(null);
         setCommentText("");
-      }}
-      shouldCloseOnOverlayClick={true}
-      style={customStyles(350)}>
-      <LinearGradientBackground colors={[black2, black2]}>
-        <View style={styles.header}>
-          <MyText fontSize={16} mv={10} pageHeaders>
-            Comments
-          </MyText>
-        </View>
-
-        <View
-          style={[styles.commentContainer, post?.comments?.length > 2]}
-          keyboardShouldPersistTaps={"handled"}>
-          {loading ? (
-            <View style={styles.loadingContainer}>
-              <LottieLoader />
-            </View>
-          ) : (
-            <>
-              {postDetails?.comments?.length ? (
-                <PostComments
-                  border={"hidden"}
-                  fullScreenPost={false}
-                  reelsScreenPost={true}
-                  comments={postDetails?.comments || []}
-                  postId={postDetails?.id}
-                  noOfComments={postDetails?.number_of_comments}
-                  currentTopicId={currentTopicId}
-                  post={postDetails}
-                  setParentId={(data) => {
-                    commentInputRef?.current?.focus();
-                    setParentId(data);
-                  }}
-                  setDirectReplyTo={setDirectReplyTo}
-                  setMentionedUser={setReplyToSpecificPerson}
-                />
-              ) : (
-                <></>
-              )}
-            </>
-          )}
-        </View>
-
-        {postDetails?.comments?.length && getCommentsLoading && (
-          <View style={styles.loaderContainer}>
-            <LottieLoader width={25} height={25} />
+        setCommentModal(false);
+      }}>
+      <View style={styles.container}>
+        <LinearGradientBackground colors={[black2, black2]}>
+          <View style={styles.header}>
+            <MyText fontSize={16} mv={10} pageHeaders>
+              Comments
+            </MyText>
           </View>
-        )}
 
-        <View style={styles.lineBreak} />
-
-        <View style={styles.inputContainer}>
-          {parentId && (
-            <View style={styles.replyToContainer}>
-              <View style={styles.replyToTextContainer}>
-                <Reply width={25} height={25} />
-                <View style={styles.textContainer}>
-                  <MyText>Replying to</MyText>
-                  <MyText color={primaryTextBlue}>
-                    @
-                    {directReplyTo
-                      ? directReplyTo?.team_name
-                      : parentId?.team_name}
-                  </MyText>
-                </View>
+          <View
+            style={[
+              styles.commentContainer,
+              { height: `calc(${windowMaxHeight} / 2)` },
+            ]}
+            keyboardShouldPersistTaps={"handled"}>
+            {loading ? (
+              <View style={styles.loadingContainer}>
+                <LottieLoader />
               </View>
-              <Pressable onPress={() => onCloseReply()}>
-                <Close />
-              </Pressable>
+            ) : (
+              <>
+                {postDetails?.comments?.length ? (
+                  <PostComments
+                    border={"hidden"}
+                    fullScreenPost={false}
+                    reelsScreenPost={true}
+                    comments={postDetails?.comments || []}
+                    postId={postDetails?.id}
+                    noOfComments={postDetails?.number_of_comments}
+                    currentTopicId={currentTopicId}
+                    post={postDetails}
+                    setParentId={(data) => {
+                      commentInputRef?.current?.focus();
+                      setParentId(data);
+                    }}
+                    setDirectReplyTo={setDirectReplyTo}
+                    setMentionedUser={setReplyToSpecificPerson}
+                  />
+                ) : (
+                  <></>
+                )}
+              </>
+            )}
+          </View>
+
+          {postDetails?.comments?.length && getCommentsLoading && (
+            <View style={styles.loaderContainer}>
+              <LottieLoader width={25} height={25} />
             </View>
           )}
-          <CommentInput
-            commentInputRef={commentInputRef}
-            postId={post?.id}
-            currentTopicId={currentTopicId}
-            value={commentText}
-            setValue={setCommentText}
-            setMentionedUser={setMentionedUser}
-            mentionedUser={mentionedUser}
-            replyToSpecificPerson={replyToSpecificPerson}
-            parentId={parentId}
-            setParentId={setParentId}
-          />
-        </View>
-      </LinearGradientBackground>
-    </Modal>
+
+          <View style={styles.lineBreak} />
+
+          <View style={styles.inputContainer}>
+            {parentId && (
+              <View style={styles.replyToContainer}>
+                <View style={styles.replyToTextContainer}>
+                  <Reply width={25} height={25} />
+                  <View style={styles.textContainer}>
+                    <MyText>Replying to</MyText>
+                    <MyText color={primaryTextBlue}>
+                      @
+                      {directReplyTo
+                        ? directReplyTo?.team_name
+                        : parentId?.team_name}
+                    </MyText>
+                  </View>
+                </View>
+                <Pressable onPress={() => onCloseReply()}>
+                  <Close />
+                </Pressable>
+              </View>
+            )}
+            <CommentInput
+              commentInputRef={commentInputRef}
+              postId={post?.id}
+              currentTopicId={currentTopicId}
+              value={commentText}
+              setValue={setCommentText}
+              setMentionedUser={setMentionedUser}
+              mentionedUser={mentionedUser}
+              replyToSpecificPerson={replyToSpecificPerson}
+              parentId={parentId}
+              setParentId={setParentId}
+            />
+          </View>
+        </LinearGradientBackground>
+      </View>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
+  outerContainer: {
+    width: "100vw",
+    justifyContent: "flex-end",
+    position: "absolute",
+    bottom: 0,
+    right: `calc(( 500px - 100vw) / 2)`,
+    height: "100vh",
+    alignItems: "center",
+    backgroundColor: blackOpacity,
+  },
+  container: {
+    width: windowMaxWidth,
+    backgroundColor: postBackground[theme],
+  },
   header: {
     alignItems: "center",
   },
   commentContainer: {
     width: windowMaxWidth,
-    maxHeight: windowMaxHeight / 2,
+    overflow: "scroll",
     alignSelf: "center",
     marginHorizontal: 20,
   },
