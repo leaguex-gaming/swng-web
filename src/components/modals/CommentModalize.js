@@ -85,7 +85,7 @@ const CommentModalize = ({
           <View
             style={[
               styles.commentContainer,
-              { height: `calc(${windowMaxHeight} / 2)` },
+              { maxHeight: `calc(${windowMaxHeight} / 2)` },
             ]}
             keyboardShouldPersistTaps={"handled"}>
             {loading ? (
