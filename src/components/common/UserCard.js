@@ -49,12 +49,12 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
-    flex: 1,
+    width: "100%",
     backgroundColor: black2,
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 8,
-    marginBottom: 12,
+    marginBottom: 5,
   },
   card: {
     flexDirection: "row",

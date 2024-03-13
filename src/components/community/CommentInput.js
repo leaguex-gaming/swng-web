@@ -156,10 +156,10 @@ const CommentInput = ({
   }, [mentionText]);
 
   return (
-    <>
-      {fullScreenPost && showMentionModal && (
+    <View>
+      {showMentionModal && (
         <MentionModal
-          fullScreenPost={true}
+          fullScreenPost={fullScreenPost}
           search={mentionText}
           onUserPress={selectUser}
         />
@@ -213,7 +213,7 @@ const CommentInput = ({
           onPress={onCommentSend}
         />
       </View>
-    </>
+    </View>
   );
 };
 

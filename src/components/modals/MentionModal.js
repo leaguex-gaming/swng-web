@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { FlatList } from "react-native-web";
+import { FlatList, StyleSheet, View } from "react-native-web";
 import { searchUsersThunk } from "@/store/thunks/community";
 import UserCard from "../common/UserCard";
 import { useDispatch } from "react-redux";
-import Modal from "react-modal";
-import { customStyles } from "./utils";
+import { postBackground, theme } from "@/constants/theme/colors";
+import { windowMaxWidth } from "@/constants/DeviceData";
 
 const MentionModal = ({ fullScreenPost, search, onUserPress = () => {} }) => {
   const [users, setUsers] = useState([]);
@@ -29,10 +29,12 @@ const MentionModal = ({ fullScreenPost, search, onUserPress = () => {} }) => {
 
   if (search) {
     return (
-      <Modal
-        isOpen={() => {}}
-        shouldCloseOnOverlayClick={true}
-        style={customStyles(300, fullScreenPost ? 60 : 0)}>
+      <View
+        style={StyleSheet.flatten([
+          styles.outerContainer,
+          !fullScreenPost && { left: -20 },
+        ])}
+        onPress={() => {}}>
         <FlatList
           data={users}
           showsVerticalScrollIndicator={false}
@@ -45,11 +47,28 @@ const MentionModal = ({ fullScreenPost, search, onUserPress = () => {} }) => {
               disableProfileRoute={true}
             />
           )}></FlatList>
-      </Modal>
+      </View>
     );
   } else {
     return <></>;
   }
 };
+
+const styles = StyleSheet.create({
+  outerContainer: {
+    width: windowMaxWidth,
+    maxHeight: 200,
+    zIndex: 10,
+    position: "absolute",
+    bottom: 50,
+    overflow: "scroll",
+    backgroundColor: postBackground[theme],
+    padding: 5,
+  },
+  container: {
+    width: windowMaxWidth,
+    backgroundColor: postBackground[theme],
+  },
+});
 
 export default MentionModal;

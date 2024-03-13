@@ -377,15 +377,6 @@ const Post = (props) => {
                 handleFocus={handleFocus}
                 post={props}
               />
-              {!fullScreenPost &&
-                showComments &&
-                focusedInput &&
-                showMentionModal && (
-                  <MentionModal
-                    search={mentionText}
-                    onUserPress={selectUser}
-                    style={{ top: 60 }}></MentionModal>
-                )}
             </>
           )}
         </View>
