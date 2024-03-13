@@ -189,12 +189,12 @@ const CommunityVideoPlayer = ({
           resizeMode={"contain"}
           onBuffer={onBuffer}
           onError={(err) => {
-            if (err.error.extra == -1004) {
-              setErr(true);
-            } else if (err.error.extra == -2147483648) {
-              setErr(true);
-              setRetry(true);
-            }
+            // if (err.error.extra == -1004) {
+            //   setErr(true);
+            // } else if (err.error.extra == -2147483648) {
+            //   setErr(true);
+            //   setRetry(true);
+            // }
           }}
           muted={videoMuted}
           poster={poster}

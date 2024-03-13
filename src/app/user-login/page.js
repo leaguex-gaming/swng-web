@@ -14,6 +14,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import Marquee from "@/components/common/Marquee";
 import GoogleLogo from "../../../public/svg/GoogleLogo";
 import MyButton from "@/components/common/MyButton";
+import { useRouter } from "next/navigation";
 
 const GoogleAuth = () => {
   const [loading, setLoading] = useState(false);
@@ -23,6 +24,7 @@ const GoogleAuth = () => {
   const { googleSignInLoading, guestLoginLoading } = useSelector(
     (state) => state.user
   );
+  const router = useRouter();
 
   const onGoogleSignin = useGoogleLogin({
     onSuccess: async (codeResponse) => {
@@ -30,11 +32,12 @@ const GoogleAuth = () => {
     },
   });
 
-  const onGuestLogin = () => {
+  const onGuestLogin = async () => {
     try {
       if (linkActive && !googleSignInLoading) {
         setLinkActive(false);
-        dispatch(guestLogin());
+        await dispatch(guestLogin());
+        router.replace("/");
       }
     } catch (err) {}
   };
@@ -57,6 +60,7 @@ const GoogleAuth = () => {
         <MyButton
           label={"Go in with google"}
           backgroundColor={buttonGoogle.dark}
+          type="google"
           mv={10}
           onPress={() => {
             onGoogleSignin();

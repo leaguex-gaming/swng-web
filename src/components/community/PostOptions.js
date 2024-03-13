@@ -186,7 +186,7 @@ const PostOptions = ({
   const optionsOnPress = async (type) => {
     try {
       const isGuest = is_guest;
-      if (isGuest && type !== "share") {
+      if (isGuest && type !== "share" && type !== "analytics") {
         dispatch(updateSignupFrom(type));
       } else {
         if (type === "clap") {

@@ -4,6 +4,7 @@ import {
   TouchableWithoutFeedback,
   Pressable,
   StyleSheet,
+  View,
 } from "react-native-web";
 import { background } from "@/constants/theme/colors";
 import { useSelector } from "react-redux";
@@ -74,7 +75,17 @@ export const LinearGradientBackground = ({
   colors = ["transparent", "transparent"],
   ...otherProps
 }) => {
-  return { children };
+  return (
+    <View
+      style={StyleSheet.flatten([
+        {
+          background: `linear-gradient(to bottom, ${colors[0]}, ${colors[1]})`,
+        },
+        containerStyle,
+      ])}>
+      {children}
+    </View>
+  );
 };
 
 export const HideKeyboard = ({ children }) => (

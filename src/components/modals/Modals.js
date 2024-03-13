@@ -12,6 +12,7 @@ import DeleteModalize from "./DeleteModalize";
 import ReportModalize from "./ReportModal";
 import OptionsModalize from "./OptionsModalize";
 import CommentOptionsModalize from "./CommentOptionsModalize";
+import SignupModalize from "./SignupModalize";
 
 function Modals() {
   const dispatch = useDispatch();
@@ -38,9 +39,14 @@ function Modals() {
   const gifModalizeRef = useRef();
   const commentMoreOptionsRef = useRef(null);
 
-  console.log(showCommentMoreOptions);
   return (
     <>
+      {signupFrom && (
+        <View style={[styles.modalContainer]}>
+          <SignupModalize modalizeRef={signupModalizeRef} type={signupFrom} />
+        </View>
+      )}
+
       {showPostMoreOptions && (
         <View style={[styles.modalContainer]}>
           <OptionsModalize modalizeRef={postMoreOptionsRef} />

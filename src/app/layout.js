@@ -6,6 +6,7 @@ import Modals from "@/components/modals/Modals";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./../components/common/toast.css";
+import UserRestiction from "@/utils/UserRestriction";
 
 const jaguar = localFont({
   src: "../../public/fonts/Jaguar.ttf",
@@ -48,7 +49,7 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children, authentication }) {
+export default function RootLayout({ children }) {
   const userToken = cookies().get("accessToken")?.value;
 
   return (
@@ -60,8 +61,7 @@ export default function RootLayout({ children, authentication }) {
             "flex max-h-screen overflow-hidden min-w-screen bg-black justify-center"
           }>
           <Providers>
-            {!userToken && authentication}
-            {children}
+            <UserRestiction>{children}</UserRestiction>
             <Modals />
             <ToastContainer autoClose={5000} closeButton={false} />
           </Providers>

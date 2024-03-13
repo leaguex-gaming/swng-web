@@ -27,7 +27,8 @@ function DoubleTapHandler({
         // No single tap timeout, so this is the first tap.
         // Set a timeout to detect a double tap.
         const timeout = setTimeout(() => {
-          dispatch(updateSignupFrom("default"));
+          singleTapAction();
+          setSingleTapTimeout(null);
         }, 300); // Adjust the timeout duration as needed for your application.
         setSingleTapTimeout(timeout);
       }

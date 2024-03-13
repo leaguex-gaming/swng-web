@@ -6,11 +6,8 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const id = params.postId;
 
   const url = `https://966ievwykg.execute-api.ap-south-1.amazonaws.com/development/api/v1/sportsgram/posts?post_id=${id}`;
-  const userToken = cookies().get("accessToken")?.value;
 
-  const res = await fetch(url, {
-    headers: { "x-access-token": userToken },
-  }).then((res) => res.json());
+  const res = await fetch(url).then((res) => res.json());
 
   return {
     title: `Swng photos and videos . ${res.posts.topic.name}`,

@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import { Pressable, StyleSheet, View, Keyboard } from "react-native-web";
 import MyText from "./MyText";
-import { black, white } from "@/constants/theme/colors";
+import { black, buttonGoogle, white } from "@/constants/theme/colors";
 import ButtonBGFull from "../../../public/svg/ButtonBG";
 import ButtonHalf from "../../../public/svg/ButtonHalf";
 import { windowMaxHeight, windowMaxWidth } from "@/constants/DeviceData";
 import { LottieView } from "./LottieLoader";
+
+const buttontypeColors = {
+  primary: "rgba(27,71,230,1)",
+  secondary: "rgba(47,180,50,1)",
+  tertiary: "rgba(255, 255, 255, 1)",
+  semiTransparent: "rgba(255, 255, 255, 0.1)",
+  transparent: "rgba(0,0,0,0)",
+  google: buttonGoogle.dark,
+};
 
 /**
  * The `MyButton` function is a custom button component in JavaScript that allows for customization of
@@ -26,7 +35,7 @@ const MyButton = ({
   debounceTime = 1000,
   debounceFunc = true,
   disabledStatePressAction = () => {},
-  backgroundColor = "white",
+  backgroundColor,
   buttonColor = "black",
   iconComponent = null,
   disableOpacity = 0.3,
@@ -40,13 +49,18 @@ const MyButton = ({
     width: width,
     height: height,
   });
+  const cardStyle = {
+    width: width,
+    height: height,
+    marginVertical: mv,
+  };
 
   const disabledOpacity = disabled ? disableOpacity : 1;
 
   return (
     <>
       <View
-        style={[styles.container]}
+        style={StyleSheet.flatten([styles.container, cardStyle])}
         onLayout={(x) => {
           setContainerSize({
             width: x.nativeEvent.layout.width,
@@ -59,7 +73,7 @@ const MyButton = ({
             height={height}
             opacity={disabledOpacity}
             type={type}
-            color={backgroundColor}
+            color={buttontypeColors[type]}
           />
         </View>
         {/* <View style={[styles.card]}>

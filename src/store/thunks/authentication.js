@@ -67,29 +67,37 @@ const googleSignIn = createAsyncThunk(
 
 const guestLogin = createAsyncThunk("auth/guestLogin", async (_, thunkAPI) => {
   try {
-    let id;
+    // let id;
 
-    const randomString =
-      Math.random().toString(20).substring(2, 14) +
-      Math.random().toString(20).substring(2, 14);
+    // const randomString =
+    //   Math.random().toString(20).substring(2, 14) +
+    //   Math.random().toString(20).substring(2, 14);
 
-    id = `${randomString}`;
+    // id = `${randomString}`;
 
-    let requestPayload = {
-      device_id: id,
+    // let requestPayload = {
+    //   device_id: id,
+    // };
+
+    // let response = await ApiService.post(GUEST_LOGIN, requestPayload);
+
+    // if (response.status === 200 && response.data.access_token) {
+    let userData = {
+      is_guest: true,
+      message: "Guest user found!",
+      team_name: "Guest User",
     };
 
-    let response = await ApiService.post(GUEST_LOGIN, requestPayload);
+    thunkAPI.dispatch(updateUserSliceData({ ...userData }));
 
-    if (response.status === 200 && response.data.access_token) {
-      let userData = response.data;
+    thunkAPI.dispatch(
+      updateSignInStatus({
+        checkingSignIn: false,
+        isSignedIn: true,
+      })
+    );
 
-      await logInSuccess({ userData }, thunkAPI);
-
-      return userData;
-    } else {
-      throw response;
-    }
+    return userData;
   } catch (err) {
     errorToast(err);
 
@@ -119,7 +127,7 @@ const logInSuccess = async ({ userData }, thunkAPI) => {
       })
     );
 
-    window.history.replaceState(null, "", "/feed");
+    window.history.replaceState(null, "", "/");
   } catch (err) {
     errorToast(err);
   }

@@ -209,17 +209,21 @@ const Post = (props) => {
 
   const onHamburgerClick = () => {
     try {
-      dispatch(
-        updatePostMoreOptions({
-          show: true,
-          post: {
-            ...props,
-            commentInputRef: null,
-            fullScreenPost: fullScreenPost,
-            onHamburgerClick: null,
-          },
-        })
-      );
+      if (is_guest) {
+        dispatch(updateSignupFrom("default"));
+      } else {
+        dispatch(
+          updatePostMoreOptions({
+            show: true,
+            post: {
+              ...props,
+              commentInputRef: null,
+              fullScreenPost: fullScreenPost,
+              onHamburgerClick: null,
+            },
+          })
+        );
+      }
     } catch (e) {
       console.log(e);
     }

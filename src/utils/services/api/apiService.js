@@ -32,7 +32,9 @@ ApiService.interceptors.request.use(
   (config) => {
     let accessToken = getCookie("accessToken");
 
-    config.headers["x-access-token"] = `${accessToken}`;
+    if (accessToken) {
+      config.headers["x-access-token"] = `${accessToken}`;
+    }
 
     return config;
   },

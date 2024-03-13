@@ -1,5 +1,5 @@
-"use client";
+import UserRestiction from "@/utils/UserRestriction";
 
 export default function PostInfoLayout({ children }) {
-  return <>{children}</>;
+  return <UserRestiction>{children}</UserRestiction>;
 }
