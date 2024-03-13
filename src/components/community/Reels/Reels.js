@@ -21,6 +21,7 @@ const Reels = ({ postId, currentTopicId = 0 }) => {
   const [viewablePost, setviewablePost] = useState(null);
   const [loading, setLoading] = useState(false);
   const [visibleIndex, setVisibleIndex] = useState(0);
+  const [rendered, setRendered] = useState(false);
 
   //---------------------------------------------redux store management-------------------------------------//
   const dispatch = useDispatch();
@@ -77,6 +78,14 @@ const Reels = ({ postId, currentTopicId = 0 }) => {
     apiCall();
   }, [postId, filteredPost]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setRendered(true);
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   //--------------------------------------onPress Actions and Functions----------------------------------------//
   const getPostByIdfunc = async () => {
     setLoading(true);
@@ -100,7 +109,7 @@ const Reels = ({ postId, currentTopicId = 0 }) => {
   //--------------------------------------render ui----------------------------------------//
   return (
     <View style={styles.container}>
-      <InBuiltNavigation back={true} rightNav="" />
+      {rendered && <InBuiltNavigation back={true} rightNav="" />}
 
       {!loading && recommendedPosts?.length && (
         // <SwiperFlatList
