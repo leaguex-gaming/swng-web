@@ -146,11 +146,7 @@ const Post = (props) => {
     console.log("called");
     // if (route.name === "PostFullScreen") return;
     if (props?.media_type === "video") {
-      //   rootNavigate("Reels", "navigate", {
-      //     postId: id,
-      //     currentTopicId,
-      //     mediaType: props?.media_type,
-      //   });
+      router.push(`/reel/${id}`);
     } else {
       router.push(`/post/${id}`);
     }

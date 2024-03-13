@@ -11,7 +11,8 @@ export const WEB_CLIENT_ID =
   "483408125574-fnsvl0msprfptvpk2ah90lomhq116e8u.apps.googleusercontent.com";
 
 export const DEEPLINK_BASE_URL = "https://www.swng.fan/dl";
-export const DEEPLINK_NORMAL_POST_URL = "https://www.swng.fan/post-full-screen";
+export const DEEPLINK_NORMAL_POST_URL =
+  "https://main.d2glsnor92oymb.amplifyapp.com/post";
 export const DEEPLINK_REELS_URL = "https://www.swng.fan/reels";
 
 export const VAP_ID_KEY =

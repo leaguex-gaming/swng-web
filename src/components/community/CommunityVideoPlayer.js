@@ -19,6 +19,7 @@ import MyText from "../common/MyText";
 import { windowMaxWidth } from "@/constants/DeviceData";
 import DoubleTapHandler from "./DoubleTapHandler";
 import { black, black3 } from "@/constants/theme/colors";
+import { useRouter } from "next/navigation";
 // import MyButton from "../common/MyButton";
 
 const CommunityVideoPlayer = ({
@@ -37,6 +38,7 @@ const CommunityVideoPlayer = ({
   mediaType,
 }) => {
   // const isFocused = useIsFocused();
+  const router = useRouter();
 
   //---------------------------------------------state management------------------------------------------//
   const [paused, setPaused] = useState(false);
@@ -91,11 +93,7 @@ const CommunityVideoPlayer = ({
 
   const handlePress = useCallback(() => {
     if (!reelsScreen) {
-      rootNavigate("Reels", "navigate", {
-        postId,
-        currentTopicId,
-        mediaType,
-      });
+      router.push(`/reel/${postId}`);
     }
     setPaused((prevPaused) => !prevPaused);
   }, [onPress]);
