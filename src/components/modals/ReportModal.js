@@ -114,7 +114,6 @@ const ReportModalize = () => {
           />
           <MyButton
             label="Report"
-            type="tertiary"
             loading={reportPostLoading}
             width={windowMaxWidth > 500 ? 210 : (windowMaxWidth - 140) / 2}
             height={40}
@@ -159,7 +158,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     position: "absolute",
-    bottom: -20,
+    bottom: -30,
   },
   reportListItem: {
     flexDirection: "row",

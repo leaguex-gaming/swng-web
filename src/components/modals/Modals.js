@@ -89,6 +89,8 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "flex-end",
     position: "absolute",
+    left: 0,
+    top: 0,
   },
 });
 

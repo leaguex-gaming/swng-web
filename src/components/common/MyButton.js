@@ -73,7 +73,7 @@ const MyButton = ({
             height={height}
             opacity={disabledOpacity}
             type={type}
-            color={buttontypeColors[type]}
+            color={backgroundColor || buttontypeColors[type]}
           />
         </View>
         {/* <View style={[styles.card]}>

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-import { StyleSheet, View, ScrollView } from "react-native-web";
+import { StyleSheet, View, ScrollView, Pressable } from "react-native-web";
 import Header from "../common/Header";
 import { BackButton } from "../common/InBuiltNavigation";
 import { postBackground, theme, white } from "@/constants/theme/colors";
@@ -34,57 +34,70 @@ const GiphyModal = ({ modalizeRef }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.innerContainer}>
-        <>
-          {rendered && (
-            <View style={styles.container}>
-              <Header
-                backgroundColor={postBackground[theme]}
-                leftComponent={
-                  <BackButton
-                    onPress={() => {
-                      dispatch(updateGifModalVisible(false));
+    <Pressable
+      style={styles.outerContainer}
+      onPress={() => {
+        dispatch(updateGifModalVisible(false));
+      }}>
+      <View style={styles.container}>
+        <View style={styles.innerContainer}>
+          <>
+            {rendered && (
+              <View style={styles.container}>
+                <Header
+                  backgroundColor={postBackground[theme]}
+                  leftComponent={
+                    <BackButton
+                      onPress={() => {
+                        dispatch(updateGifModalVisible(false));
+                      }}
+                    />
+                  }
+                  headerText={`Post GIF`}></Header>
+
+                <View
+                  style={{
+                    marginBottom: 20,
+                    marginHorizontal: 20,
+                    width: windowMaxWidth - 40,
+                  }}>
+                  <SearchBar theme={"dark"} />
+                </View>
+
+                <ScrollView showsVerticalScrollIndicator={false}>
+                  <Grid
+                    key={searchKey}
+                    columns={3}
+                    onGifClick={(gif, e) => {
+                      e.preventDefault();
+
+                      dispatch(
+                        updateGiphyCommentMediaURL(gif?.images?.downsized?.url)
+                      );
+                      closeGIFModal();
                     }}
+                    width={windowMaxWidth}
+                    fetchGifs={fetchGifs}
+                    style={{ marginTop: 20 }}
                   />
-                }
-                headerText={`Post GIF`}></Header>
-
-              <View
-                style={{
-                  marginBottom: 20,
-                  marginHorizontal: 20,
-                  width: windowMaxWidth - 40,
-                }}>
-                <SearchBar theme={"dark"} />
+                </ScrollView>
               </View>
-
-              <ScrollView showsVerticalScrollIndicator={false}>
-                <Grid
-                  key={searchKey}
-                  columns={3}
-                  onGifClick={(gif, e) => {
-                    e.preventDefault();
-
-                    dispatch(
-                      updateGiphyCommentMediaURL(gif?.images?.downsized?.url)
-                    );
-                    closeGIFModal();
-                  }}
-                  width={windowMaxWidth}
-                  fetchGifs={fetchGifs}
-                  style={{ marginTop: 20 }}
-                />
-              </ScrollView>
-            </View>
-          )}
-        </>
+            )}
+          </>
+        </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
+  outerContainer: {
+    width: "100vw",
+    height: "100vh",
+    blur: 0.5,
+    alignItems: "center",
+    justifyContent: "flex-end",
+  },
   container: {
     width: windowMaxWidth,
     height: "65vh",
