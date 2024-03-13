@@ -7,6 +7,7 @@ import MyButton from "../common/MyButton";
 import { useDispatch, useSelector } from "react-redux";
 import { updateReportPostModalVisible } from "@/store/slices/common-slice";
 import Checkbox from "../common/Checkbox";
+import { blackOpacity } from "@/constants/theme/colors";
 
 const REPORT_LIST = [
   "This post is not related to sports",
@@ -78,67 +79,76 @@ const ReportModalize = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.innerContainer}>
-        <MyText pageHeaders>Report this post</MyText>
-        <MyText textAlign={"center"} pb={20}>
-          Choose what's wrong with this post
-        </MyText>
-        <View>
-          {REPORT_LIST.map((item, index) => {
-            return (
-              <ReportListItem
-                title={item}
-                key={index}
-                onPress={() => onCheckBoxClick(index)}
-                index={index}
-                reportContentArray={reportContentArray}
-              />
-            );
-          })}
-        </View>
-        <View style={styles.buttonContainer}>
-          <MyButton
-            label="Cancel"
-            width={windowMaxWidth > 500 ? 210 : (windowMaxWidth - 140) / 2}
-            height={40}
-            mv={10}
-            onPress={() => {
-              if (!reportPostLoading) {
-                dispatch(updateReportPostModalVisible(false));
-              }
-            }}
-            buttonTextSize={14}
-            backgroundColor={"#535353"}
-            buttonColor={"white"}
-          />
-          <MyButton
-            label="Report"
-            loading={reportPostLoading}
-            width={windowMaxWidth > 500 ? 210 : (windowMaxWidth - 140) / 2}
-            height={40}
-            disabled={reportContentArray.length === 0}
-            mv={10}
-            onPress={() => onReportPost()}
-            disableOpacity={0.75}
-            buttonTextSize={14}
-          />
+    <Pressable
+      style={styles.outerContainer}
+      onPress={() => {
+        dispatch(updateReportPostModalVisible(false));
+      }}>
+      <View style={styles.container}>
+        <View style={styles.innerContainer}>
+          <MyText pageHeaders>Report this post</MyText>
+          <MyText textAlign={"center"} pb={20}>
+            Choose what's wrong with this post
+          </MyText>
+          <View>
+            {REPORT_LIST.map((item, index) => {
+              return (
+                <ReportListItem
+                  title={item}
+                  key={index}
+                  onPress={() => onCheckBoxClick(index)}
+                  index={index}
+                  reportContentArray={reportContentArray}
+                />
+              );
+            })}
+          </View>
+          <View style={styles.buttonContainer}>
+            <MyButton
+              label="Cancel"
+              width={windowMaxWidth > 500 ? 210 : (windowMaxWidth - 140) / 2}
+              height={40}
+              mv={10}
+              onPress={() => {
+                if (!reportPostLoading) {
+                  dispatch(updateReportPostModalVisible(false));
+                }
+              }}
+              buttonTextSize={14}
+              backgroundColor={"#535353"}
+              buttonColor={"white"}
+            />
+            <MyButton
+              label="Report"
+              loading={reportPostLoading}
+              width={windowMaxWidth > 500 ? 210 : (windowMaxWidth - 140) / 2}
+              height={40}
+              disabled={reportContentArray.length === 0}
+              mv={10}
+              onPress={() => onReportPost()}
+              disableOpacity={0.75}
+              buttonTextSize={14}
+            />
+          </View>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    zIndex: 100,
+  outerContainer: {
+    width: "100vw",
+    height: "100vh",
+    backgroundColor: blackOpacity,
+    zIndex: 10,
     position: "absolute",
-    top: 0,
-    height: windowMaxHeight,
-    width: windowMaxWidth,
-    backgroundColor: "#000000BB",
     alignItems: "center",
     justifyContent: "center",
+  },
+  container: {
+    width: windowMaxWidth,
+    backgroundColor: "#000000BB",
   },
   innerContainer: {
     marginHorizontal: 20,

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, BackHandler } from "react-native-web";
+import { View, StyleSheet, BackHandler, Pressable } from "react-native-web";
 import MyText from "../common/MyText";
 import { deleteCommentThunk, deletePost } from "@/store/thunks/community";
 import { windowMaxHeight, windowMaxWidth } from "@/constants/DeviceData";
 import MyButton from "../common/MyButton";
 import { useDispatch, useSelector } from "react-redux";
 import { updateDeletePostModalVisible } from "@/store/slices/common-slice";
+import { blackOpacity } from "@/constants/theme/colors";
 
 const DeleteModalize = () => {
   const dispatch = useDispatch();
@@ -68,55 +69,64 @@ const DeleteModalize = () => {
   }, [deletePostLoading]);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.innerContainer}>
-        <MyText pageHeaders>Delete for sure?</MyText>
-        <MyText textAlign={"center"} pb={20}>
-          Are you sure you want to delete this, since this actions can’t be
-          undone.
-        </MyText>
+    <Pressable
+      style={styles.outerContainer}
+      onPress={() => {
+        dispatch(updateDeletePostModalVisible(false));
+      }}>
+      <View style={styles.container}>
+        <View style={styles.innerContainer}>
+          <MyText pageHeaders>Delete for sure?</MyText>
+          <MyText textAlign={"center"} pb={20}>
+            Are you sure you want to delete this, since this actions can’t be
+            undone.
+          </MyText>
 
-        <View style={styles.buttonContainer}>
-          <MyButton
-            label="No"
-            width={windowMaxWidth > 500 ? 210 : (windowMaxWidth - 140) / 2}
-            height={40}
-            mv={10}
-            onPress={() => {
-              if (!deletePostLoading) {
-                dispatch(updateDeletePostModalVisible(false));
-              }
-            }}
-            buttonTextSize={14}
-            backgroundColor={"#535353"}
-            buttonColor={"white"}
-          />
-          <MyButton
-            label="YES"
-            type="tertiary"
-            loading={deletePostLoading}
-            width={windowMaxWidth > 500 ? 210 : (windowMaxWidth - 140) / 2}
-            height={40}
-            mv={10}
-            onPress={() => onDeletePost()}
-            buttonTextSize={14}
-          />
+          <View style={styles.buttonContainer}>
+            <MyButton
+              label="No"
+              width={windowMaxWidth > 500 ? 210 : (windowMaxWidth - 140) / 2}
+              height={40}
+              mv={10}
+              onPress={() => {
+                if (!deletePostLoading) {
+                  dispatch(updateDeletePostModalVisible(false));
+                }
+              }}
+              buttonTextSize={14}
+              backgroundColor={"#535353"}
+              buttonColor={"white"}
+            />
+            <MyButton
+              label="YES"
+              type="tertiary"
+              loading={deletePostLoading}
+              width={windowMaxWidth > 500 ? 210 : (windowMaxWidth - 140) / 2}
+              height={40}
+              mv={10}
+              onPress={() => onDeletePost()}
+              buttonTextSize={14}
+            />
+          </View>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    zIndex: 100,
+  outerContainer: {
+    width: "100vw",
+    height: "100vh",
+    backgroundColor: blackOpacity,
+    zIndex: 10,
     position: "absolute",
-    top: 0,
-    height: windowMaxHeight,
-    width: windowMaxWidth,
-    backgroundColor: "#000000BB",
     alignItems: "center",
     justifyContent: "center",
+  },
+  container: {
+    width: windowMaxWidth,
+    backgroundColor: "#000000BB",
   },
   innerContainer: {
     marginHorizontal: 20,
@@ -136,7 +146,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     position: "absolute",
-    bottom: -20,
+    bottom: -30,
   },
 });
 

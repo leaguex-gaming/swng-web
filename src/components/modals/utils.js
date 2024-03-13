@@ -1,12 +1,16 @@
 "use client";
 
 const { windowMaxWidth } = require("@/constants/DeviceData");
-const { postBackground, theme } = require("@/constants/theme/colors");
+const {
+  postBackground,
+  theme,
+  blackOpacity,
+} = require("@/constants/theme/colors");
 
 export const customStyles = (modalHeight, bottom = 0) => {
   return {
     overlay: {
-      backgroundColor: "transparent",
+      backgroundColor: blackOpacity,
     },
     content: {
       width: windowMaxWidth,

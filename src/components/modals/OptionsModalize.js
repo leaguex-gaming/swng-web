@@ -38,17 +38,16 @@ const OptionsModalize = ({ modalizeRef }) => {
   const OptionsObj = {
     CopyLink: {
       title: "Copy link",
-      onClick: () => {
-        // if (moreOptionsPost?.media_type === "video") {
-        //   Clipboard.setString(
-        //     `${DEEPLINK_REELS_URL}?postId=${moreOptionsPost.id}&mediaType=${moreOptionsPost?.media_type}`
-        //   );
-        // } else {
-        //   Clipboard.setString(
-        //     `${DEEPLINK_NORMAL_POST_URL}?postId=${moreOptionsPost.id}&mediaType=${moreOptionsPost?.media_type}`
-        //   );
-        // }
-
+      onClick: async () => {
+        if (moreOptionsPost?.media_type === "video") {
+          await navigator.clipboard.writeText(
+            `${DEEPLINK_NORMAL_POST_URL}/${moreOptionsPost.id}`
+          );
+        } else {
+          await navigator.clipboard.writeText(
+            `${DEEPLINK_NORMAL_POST_URL}/${moreOptionsPost.id}`
+          );
+        }
         successnotifies({
           props: {
             content: "Link Copied Successfully",

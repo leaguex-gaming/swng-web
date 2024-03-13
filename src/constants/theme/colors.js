@@ -13,6 +13,7 @@ export const black3 = "#404040";
 export const black4 = "rgba(255,255,255,0.25)";
 export const black5 = "#000000CC";
 export const black6 = "rgba(255,255,255,0.8)";
+export const blackOpacity = "#000000AA";
 
 export const background = { dark: ["#331C8D", "#1519AB"], light: "" };
 export const devBackground = { dark: ["#000000", "#000000"], light: "" };

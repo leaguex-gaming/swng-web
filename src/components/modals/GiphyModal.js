@@ -4,7 +4,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, View, ScrollView, Pressable } from "react-native-web";
 import Header from "../common/Header";
 import { BackButton } from "../common/InBuiltNavigation";
-import { postBackground, theme, white } from "@/constants/theme/colors";
+import {
+  blackOpacity,
+  postBackground,
+  theme,
+  white,
+} from "@/constants/theme/colors";
 import { windowMaxWidth } from "@/constants/DeviceData";
 import { useDispatch } from "react-redux";
 import { updateGiphyCommentMediaURL } from "@/store/slices/community-slice";
@@ -58,8 +63,8 @@ const GiphyModal = ({ modalizeRef }) => {
                 <View
                   style={{
                     marginBottom: 20,
-                    marginHorizontal: 20,
-                    width: windowMaxWidth - 40,
+                    marginHorizontal: 10,
+                    width: windowMaxWidth - 20,
                   }}>
                   <SearchBar theme={"dark"} />
                 </View>
@@ -94,9 +99,9 @@ const styles = StyleSheet.create({
   outerContainer: {
     width: "100vw",
     height: "100vh",
-    blur: 0.5,
     alignItems: "center",
     justifyContent: "flex-end",
+    backgroundColor: blackOpacity,
   },
   container: {
     width: windowMaxWidth,
