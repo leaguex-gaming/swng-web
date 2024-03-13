@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Pressable, BackHandler } from "react-native-web";
 import MyText from "../common/MyText";
@@ -5,9 +7,13 @@ import { reportPost } from "@/store/thunks/community";
 import { windowMaxHeight, windowMaxWidth } from "@/constants/DeviceData";
 import MyButton from "../common/MyButton";
 import { useDispatch, useSelector } from "react-redux";
-import { updateReportPostModalVisible } from "@/store/slices/common-slice";
+import {
+  updatePostMoreOptions,
+  updateReportPostModalVisible,
+} from "@/store/slices/common-slice";
 import Checkbox from "../common/Checkbox";
 import { blackOpacity } from "@/constants/theme/colors";
+import { useRouter } from "next/navigation";
 
 const REPORT_LIST = [
   "This post is not related to sports",
@@ -30,7 +36,8 @@ const ReportListItem = ({ title, onPress, index, reportContentArray }) => {
 
 const ReportModalize = () => {
   const dispatch = useDispatch();
-  const id = useSelector((state) => state.common.modalPost?.id);
+  const { id, ...modalPost } = useSelector((state) => state.common.modalPost);
+  const router = useRouter();
 
   const [reportContentArray, setReportContentArray] = useState([]);
 
@@ -50,8 +57,17 @@ const ReportModalize = () => {
         reason: reportContent?.join(","),
       })
     );
-
+    if (modalPost?.fullScreenPost) {
+      router.back();
+    }
     dispatch(updateReportPostModalVisible(false));
+
+    dispatch(
+      updatePostMoreOptions({
+        show: false,
+        post: {},
+      })
+    );
   };
 
   useEffect(() => {

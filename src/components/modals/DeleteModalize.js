@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, BackHandler, Pressable } from "react-native-web";
 import MyText from "../common/MyText";
@@ -7,10 +9,12 @@ import MyButton from "../common/MyButton";
 import { useDispatch, useSelector } from "react-redux";
 import { updateDeletePostModalVisible } from "@/store/slices/common-slice";
 import { blackOpacity } from "@/constants/theme/colors";
+import { useRouter } from "next/navigation";
 
 const DeleteModalize = () => {
   const dispatch = useDispatch();
   const { id, ...modalPost } = useSelector((state) => state.common.modalPost);
+  const router = useRouter();
 
   const { deletePostLoading } = useSelector((state) => state.community);
   const { profile_photo_small, team_name } = useSelector(
@@ -35,7 +39,7 @@ const DeleteModalize = () => {
         })
       );
       if (modalPost?.fullScreenPost) {
-        // rootNavigate(null, "back");
+        router.back();
       }
     } else {
       //comment
