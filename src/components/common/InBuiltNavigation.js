@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   backContainer: {
     position: "relative",
     marginTop: -2,
-    marginRight: -5,
+    marginLeft: -5,
   },
   back: {
     position: "absolute",
