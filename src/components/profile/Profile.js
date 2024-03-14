@@ -102,21 +102,21 @@ const ProfileInfo = ({
   return (
     <View style={styles.profileInfo}>
       <View style={styles.profileName}>
-        <MyText pageHeaders mr={5}>
+        <MyText pageHeaders mr={5} fontSize={"3.25vh"}>
           {uName || ""}
         </MyText>
-        <MyText fontSize={16}>@{teamName}</MyText>
+        <MyText fontSize={"2.5vh"}>@{teamName}</MyText>
       </View>
       {role && (
         <View style={styles.designation}>
-          <MyText fontSize={14} color={black} opacity={0.6}>
+          <MyText fontSize={"2vh"} color={black} opacity={0.6}>
             {role}
           </MyText>
         </View>
       )}
       {bio && (
         <View style={styles.intro}>
-          <MyText fontSize={14} textAlign={"center"} opacity={0.6}>
+          <MyText fontSize={"2vh"} textAlign={"center"} opacity={0.6}>
             {bio}
           </MyText>
         </View>
@@ -137,10 +137,12 @@ const ProfileInfo = ({
               onPress={() => onFollowListClick(stat.title)}
               key={index}>
               <View style={styles.statisticContainer} key={index}>
-                <MyText opacity={0.65} fontSize={14}>
+                <MyText opacity={0.65} fontSize={"2vh"} mv={0} pv={0}>
                   {stat.title}
                 </MyText>
-                <MyText fontSize={14}>{stat.value}</MyText>
+                <MyText fontSize={"2vh"} mv={0} pv={0}>
+                  {stat.value}
+                </MyText>
               </View>
             </Pressable>
           );
@@ -169,9 +171,9 @@ export const PostsCard = ({
       return;
     }
     if (post?.media_type === "video") {
-      router.push(`/reel/${id}`);
+      router.push(`/reel/${post.id}`);
     } else {
-      router.push(`/post/${id}`);
+      router.push(`/post/${post.id}`);
     }
   };
 
@@ -549,8 +551,6 @@ const styles = StyleSheet.create({
   },
   statisticContainer: {
     width: (windowMaxWidth - 40) / 3,
-    height: 50,
-
     borderRadius: 5,
     paddingHorizontal: 5,
     paddingVertical: 5,
