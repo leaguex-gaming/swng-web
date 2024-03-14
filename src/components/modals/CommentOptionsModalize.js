@@ -21,7 +21,7 @@ const CommentOptionsModalize = ({ modalizeRef }) => {
   const dispatch = useDispatch();
 
   const { moreOptionsComment } = useSelector((state) => state.common);
-  const { id: currentUserId } = useSelector((state) => state.userSlice);
+  const { user_id: currentUserId } = useSelector((state) => state.userSlice);
 
   let options = [];
   if (moreOptionsComment.user_id === currentUserId) {

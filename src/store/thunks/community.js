@@ -804,7 +804,7 @@ export const usersFollow = createAsyncThunk(
         }
       );
       if (response.status === 200) {
-        const myUserId = thunkAPI.getState().userSlice.id;
+        const myUserId = thunkAPI.getState().userSlice.user_id;
 
         thunkAPI.dispatch(
           updateFollow({

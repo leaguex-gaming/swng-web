@@ -162,7 +162,7 @@ const Comment = (props) => {
 
   //---------------------------------------------redux store management-------------------------------------//
   const dispatch = useDispatch();
-  const { is_guest, id: current_user_id } = useSelector(
+  const { is_guest, user_id: current_user_id } = useSelector(
     (state) => state.userSlice
   );
   const { sound } = useSelector((state) => state.common);

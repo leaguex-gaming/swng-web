@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Pressable } from "react-native-web";
 import Modal from "react-modal";
 import MyText from "../common/MyText";
@@ -23,17 +23,24 @@ import {
 import ReportIcon from "../../../public/svg/community/ReportIcon";
 import { customStyles } from "./utils";
 import { successnotifies } from "../common/ToastLayout";
+import { getProfile } from "@/store/thunks/user";
 
 const OptionsModalize = ({ modalizeRef }) => {
   const dispatch = useDispatch();
 
   const { moreOptionsPost } = useSelector((state) => state.common);
-  const { id: currentUserId } = useSelector((state) => state.userSlice);
+  const { user_id: currentUserId } = useSelector((state) => state.userSlice);
 
   let options = ["CopyLink", "Report"];
   if (moreOptionsPost.user_id === currentUserId) {
     options = ["CopyLink", "Delete"];
   }
+
+  useEffect(() => {
+    if (!currentUserId) {
+      dispatch(getProfile());
+    }
+  }, [currentUserId]);
 
   const OptionsObj = {
     CopyLink: {
@@ -114,19 +121,21 @@ const OptionsModalize = ({ modalizeRef }) => {
       }
       shouldCloseOnOverlayClick={true}
       style={customStyles(160)}>
-      <View>
-        <View style={{ marginHorizontal: 15 }}>
-          <MyText fontSize={16} mv={20}>
-            More actions for this post
-          </MyText>
-        </View>
+      {currentUserId && (
+        <View>
+          <View style={{ marginHorizontal: 15 }}>
+            <MyText fontSize={16} mv={20}>
+              More actions for this post
+            </MyText>
+          </View>
 
-        {options?.map((item, index) => {
-          return (
-            <RenderItem item={OptionsObj[item]} index={index} key={index} />
-          );
-        })}
-      </View>
+          {options?.map((item, index) => {
+            return (
+              <RenderItem item={OptionsObj[item]} index={index} key={index} />
+            );
+          })}
+        </View>
+      )}
     </Modal>
   );
 };

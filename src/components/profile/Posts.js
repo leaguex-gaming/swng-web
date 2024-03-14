@@ -307,8 +307,9 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   profilePic: {
-    overflow: "hidden",
-    flex: 1,
+    width: 40,
+    height: 40,
+    objectFit: "cover",
   },
   // tagContainer: {
   //   flexDirection: "row",

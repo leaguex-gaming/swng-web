@@ -111,9 +111,7 @@ const logInSuccess = async ({ userData }, thunkAPI) => {
 
     updateLocalAccessToken(userData.access_token);
 
-    thunkAPI.dispatch(
-      updateUserSliceData({ ...userData, id: userData?.user_id })
-    );
+    thunkAPI.dispatch(updateUserSliceData({ ...userData }));
 
     thunkAPI.dispatch(
       updateSignInStatus({

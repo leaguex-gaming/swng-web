@@ -18,7 +18,7 @@ export const getProfile = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await ApiService.get(GET_PROFILE);
-      await updateUserDataInAsyncStorate(response.data?.user);
+      // await updateUserDataInAsyncStorate(response.data?.user);
       thunkAPI.dispatch(updateUserSliceData(response.data?.user));
       thunkAPI.dispatch(updateWalletData(response.data?.wallet));
       thunkAPI.dispatch(updatePaymentMethods(response.data?.payment_methods));

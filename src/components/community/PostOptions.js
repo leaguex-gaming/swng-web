@@ -179,7 +179,7 @@ const PostOptions = ({
   const { claps = 0, user_has_liked, id, number_of_comments } = post;
 
   const dispatch = useDispatch();
-  const { is_guest, userId } = useSelector((state) => state.userSlice);
+  const { is_guest } = useSelector((state) => state.userSlice);
 
   const router = useRouter();
 

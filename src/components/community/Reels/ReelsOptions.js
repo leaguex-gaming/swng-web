@@ -31,7 +31,7 @@ const ReelsOptions = ({
 }) => {
   //---------------------------------------------redux store management-------------------------------------//
   const dispatch = useDispatch();
-  const { is_guest, id: userId } = useSelector((state) => state.userSlice);
+  const { is_guest } = useSelector((state) => state.userSlice);
   const { userProfile, usersFollowId, usersFollowLoading } = useSelector(
     (state) => state.community
   );
