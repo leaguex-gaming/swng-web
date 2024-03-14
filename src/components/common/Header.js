@@ -3,6 +3,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native-web";
 import MyText from "./MyText";
+import { windowMaxWidth } from "@/constants/DeviceData";
 
 const Header = ({
   headerText,
@@ -60,7 +61,6 @@ const styles = StyleSheet.create({
   },
   flexLeftDirectionRow: {
     flexDirection: "row",
-    marginLeft: -5,
   },
   flexDirectionRow: {
     flexDirection: "row",

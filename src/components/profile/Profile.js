@@ -236,6 +236,7 @@ export const PostsCard = ({
 
 const Profile = ({ userId }) => {
   const navUserId = userId;
+  const router = useRouter();
 
   //---------------------------------------------redux store management-------------------------------------//
   const {
@@ -437,16 +438,11 @@ const Profile = ({ userId }) => {
                     <MyTextLink
                       label={"See All"}
                       fontSize={14}
-                      onPress={
-                        () => {}
-                        // rootNavigate("UserPosts", "navigate", {
-                        //   id: userProfile[`uid_${navUserId}`].id,
-                        //   team_name: userProfile[`uid_${navUserId}`].team_name,
-                        //   name: userProfile[`uid_${navUserId}`].name,
-                        //   profilePic:
-                        //     userProfile[`uid_${navUserId}`].profile_photo_small,
-                        // })
-                      }
+                      onPress={() => {
+                        router.push(
+                          `/profile/${userProfile[`uid_${navUserId}`].id}/posts`
+                        );
+                      }}
                     />
                   ) : (
                     <></>
