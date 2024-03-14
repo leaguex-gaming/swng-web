@@ -101,51 +101,20 @@ const ReelsOptions = ({
       if (type === "clap") {
         postClapAction(post);
       } else if (type === "comment") {
-        // setShowComments(prev => !prev);
-        // commentInputRef?.current?.blur();
-        // setTimeout(() => {
-        //   commentInputRef?.current?.focus();
-        // }, 100);
-
         setCommentModal(true);
       } else if (type === "share") {
-        try {
-          const postId = post.user_id === userId ? null : post?.id;
-
-          if (post?.media_type === "video") {
-            const deep_link_url = `${DEEPLINK_REELS_URL}?postId=${post?.id}&mediaType=${post?.media_type}`;
-
-            ShareToSocial(
-              post?.media_thumbnail_url || "",
-              post?.content,
-              deep_link_url,
-              post?.id,
-              currentTopicId,
-              dispatch
-            );
-          } else if (post?.media_type === "image") {
-            const deep_link_url = `${DEEPLINK_NORMAL_POST_URL}?postId=${post?.id}&mediaType=${post?.media_type}`;
-            ShareToSocial(
-              post?.media_url,
-              post?.content,
-              deep_link_url,
-              post?.id,
-              currentTopicId,
-              dispatch
-            );
-          } else {
-            const deep_link_url = `${DEEPLINK_NORMAL_POST_URL}?postId=${post?.id}&mediaType=${post?.media_type}`;
-            ShareToSocial(
-              "",
-              post?.content,
-              deep_link_url,
-              post?.id,
-              currentTopicId,
-              dispatch
-            );
-          }
-        } catch (err) {
-          console.log(err);
+        if (post?.media_type === "video") {
+          const content = `See this Swng video by`;
+          const url = `${DEEPLINK_REELS_URL}/${post?.id}`;
+          window.open(
+            `https://twitter.com/intent/post?text=${content}&url=${url}`
+          );
+        } else {
+          const content = `See this Swng post by`;
+          const url = `${DEEPLINK_NORMAL_POST_URL}/${post?.id}`;
+          window.open(
+            `https://twitter.com/intent/post?text=${content}&url=${url}`
+          );
         }
       }
     }

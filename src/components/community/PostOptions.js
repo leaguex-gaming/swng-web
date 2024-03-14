@@ -199,17 +199,9 @@ const PostOptions = ({
           ) {
             if (post?.media_type === "video") {
               if (post?.media_type === "video") {
-                // rootNavigate("Reels", "navigate", {
-                //   postId: post?.id,
-                //   currentTopicId,
-                //   mediaType: post?.media_type,
-                // });
+                router.push(`/reel/${post?.id}`);
               } else {
-                // rootNavigate("PostFullScreen", "navigate", {
-                //   postId: post?.id,
-                //   currentTopicId,
-                //   mediaType: post?.media_type,
-                // });
+                router.push(`/post/${post?.id}`);
               }
             }
           } else {
@@ -220,37 +212,17 @@ const PostOptions = ({
             }, 100);
           }
         } else if (type === "share") {
-          const postId = post.user_id === userId ? null : id;
-          // logEvent("share_post", { postId: id, postType: post?.media_type });
           if (post?.media_type === "video") {
-            const deep_link_url = `${DEEPLINK_REELS_URL}?postId=${id}&mediaType=${post?.media_type}`;
-            ShareToSocial(
-              post?.media_thumbnail_url || "",
-              post?.content,
-              deep_link_url,
-              postId,
-              currentTopicId,
-              dispatch
-            );
-          } else if (post?.media_type === "image") {
-            const deep_link_url = `${DEEPLINK_NORMAL_POST_URL}?postId=${id}&mediaType=${post?.media_type}`;
-            ShareToSocial(
-              post?.media_url,
-              post?.content,
-              deep_link_url,
-              postId,
-              currentTopicId,
-              dispatch
+            const content = `See this Swng video by`;
+            const url = `${DEEPLINK_REELS_URL}/${id}`;
+            window.open(
+              `https://twitter.com/intent/post?text=${content}&url=${url}`
             );
           } else {
-            const deep_link_url = `${DEEPLINK_NORMAL_POST_URL}?postId=${id}&mediaType=${post?.media_type}`;
-            ShareToSocial(
-              "",
-              post?.content,
-              deep_link_url,
-              postId,
-              currentTopicId,
-              dispatch
+            const content = `See this Swng post by`;
+            const url = `${DEEPLINK_NORMAL_POST_URL}/${id}`;
+            window.open(
+              `https://twitter.com/intent/post?text=${content}&url=${url}`
             );
           }
         } else if (type === "analytics") {
