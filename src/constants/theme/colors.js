@@ -6,6 +6,7 @@ export const white = "#FFFFFF";
 export const white2 = "rgba(255,255,255,0.7)";
 export const white3 = "rgba(255,255,255,0.3)";
 export const white4 = "#FFFFFF15";
+export const white5 = "#ffffff66";
 
 export const black = "#000000";
 export const black2 = "#1E1E20";

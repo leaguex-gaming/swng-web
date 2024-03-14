@@ -9,13 +9,12 @@ import Close from "../../../public/svg/Close";
 import SettingsIcon from "../../../public/svg/bottomNav/SettingsIcon";
 import { windowMaxWidth } from "../../constants/DeviceData";
 import Polygon from "../../../public/svg/Polygon";
+import { useRouter } from "next/navigation";
 
 export const PolygonContainer = ({
   children,
   extraContainerStyle,
   onPress = () => {},
-  width = 70,
-  height = 70,
   rotate = false,
 }) => {
   return (
@@ -57,12 +56,14 @@ const InBuiltNavigation = ({
   rightNav = "question",
   onPressRightNav = () => {},
 }) => {
+  const router = useRouter();
+
   const onBack = () => {
     if (!loading) {
       if (onBackfunc) {
         onBackfunc();
       } else {
-        history.back();
+        router.back();
       }
     }
   };
@@ -136,8 +137,8 @@ const styles = StyleSheet.create({
     transform: [{ rotateY: "180deg" }],
   },
 
-  vertical: { position: "absolute", top: 16, left: 18 },
-  settings: { position: "absolute", top: 16, left: 18 },
+  vertical: { position: "absolute", top: 16, left: 25 },
+  settings: { position: "absolute", top: 16, left: 25 },
 });
 
 export default InBuiltNavigation;

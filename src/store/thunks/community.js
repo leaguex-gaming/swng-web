@@ -746,13 +746,6 @@ export const getUserProfile = createAsyncThunk(
     if (!userId) {
       return;
     }
-    if (navigation) {
-      if (myProfile) {
-        // rootNavigate("MyProfile", navigationAction, { navUserId: userId });
-      } else {
-        // rootNavigate("UsersProfile", "navigate", { navUserId: userId });
-      }
-    }
     try {
       const response = await ApiService.get(GET_USER_PROFILE, {
         params: {

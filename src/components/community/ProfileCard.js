@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import { StyleSheet, Text, View, Image, Pressable } from "react-native-web";
+import { StyleSheet, View, Image, Pressable } from "react-native-web";
 import MyText from "../common/MyText";
 import Tag from "./Tag";
 import { useSelector, useDispatch } from "react-redux";
 import { getPostsByUserId, getUserProfile } from "@/store/thunks/community";
+import { useRouter } from "next/navigation";
 
 export const ProfilePic = ({
   profilePic,
@@ -15,6 +16,9 @@ export const ProfilePic = ({
 }) => {
   const dispatch = useDispatch();
   const userSlice = useSelector((state) => state.userSlice);
+
+  const router = useRouter();
+
   const currentUserId = userSlice?.user_id;
   let profilePicture = profilePic;
   if (user_id === currentUserId) {
@@ -22,9 +26,9 @@ export const ProfilePic = ({
   }
 
   const onUserProfilePress = async () => {
-    // logEvent("profile_pic_clicked", { userId: user_id });
     if (user_id) {
-      dispatch(getUserProfile({ userId: user_id }));
+      await dispatch(getUserProfile({ userId: user_id }));
+      router.push(`/user-details/${user_id}`);
       dispatch(
         getPostsByUserId({
           page_number: 1,

@@ -143,7 +143,6 @@ const Post = (props) => {
 
   //--------------------------------------onPress Actions and Functions----------------------------------------//
   const viewPost = throttle(async () => {
-    console.log("called");
     // if (route.name === "PostFullScreen") return;
     if (props?.media_type === "video") {
       router.push(`/reel/${id}`);
