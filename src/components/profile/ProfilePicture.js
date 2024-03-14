@@ -204,6 +204,7 @@ const styles = StyleSheet.create({
   coverPicContaier: {
     width: windowMaxWidth,
     clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 50% 80%, 0% 100%)`,
+    justifyContent: "center",
   },
   linearBackground: {
     width: windowMaxWidth,
