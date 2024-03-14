@@ -2,7 +2,7 @@ import Profile from "@/components/profile/Profile";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
-  const id = params.userId;
+  const id = params.profileId;
 
   let url = `https://l1z6btl2l9.execute-api.ap-south-1.amazonaws.com/production/api/v1/sportsgram/profile?user_id=${id}`;
 
@@ -39,5 +39,5 @@ export async function generateMetadata({ params, searchParams }, parent) {
 }
 
 export default function page({ params }) {
-  return <Profile userId={params.userId} />;
+  return <Profile userId={params.profileId} />;
 }

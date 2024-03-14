@@ -195,6 +195,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     width: 100,
     height: 100,
+    objectFit: "cover",
   },
   profileCamera: {
     left: windowMaxWidth / 2 + 10,

@@ -2,7 +2,7 @@ import Reels from "@/components/community/Reels/Reels";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
-  const id = params.postId;
+  const id = params.reelId;
 
   let url = `https://l1z6btl2l9.execute-api.ap-south-1.amazonaws.com/production/api/v1/sportsgram/posts?post_id=${id}`;
 
@@ -29,5 +29,5 @@ export async function generateMetadata({ params, searchParams }, parent) {
 }
 
 export default function page({ params }) {
-  return <Reels postId={params.postId} />;
+  return <Reels postId={params.reelId} />;
 }

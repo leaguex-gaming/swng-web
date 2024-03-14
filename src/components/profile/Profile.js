@@ -73,6 +73,7 @@ const ProfileInfo = ({
   is_guest,
 }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const userSlice = useSelector((state) => state.userSlice);
   const currentUserId = userSlice?.user_id;
@@ -81,10 +82,7 @@ const ProfileInfo = ({
     if (is_guest) {
       dispatch(updateSignupFrom("default"));
     } else {
-      // rootNavigate("FollowListScreen", "push", {
-      //   title: title,
-      //   navUserId: user_id,
-      // });
+      router.push(`/profile/${user_id}/${title}`);
     }
   };
 
@@ -128,8 +126,8 @@ const ProfileInfo = ({
         ]}>
         {[
           { title: "Debut", value: dateMonth(created_at) },
-          { title: "Followers", value: total_followers },
-          { title: "Following", value: total_followings },
+          { title: "followers", value: total_followers },
+          { title: "following", value: total_followings },
         ].map((stat, index) => {
           return (
             <Pressable

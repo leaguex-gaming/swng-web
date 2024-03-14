@@ -9,6 +9,7 @@ const nextConfig = {
       "swng-media.s3.amazonaws.com",
       "s3.ap-south-1.amazonaws.com",
       "lh3.googleusercontent.com",
+      "sportsgram-media.s3.amazonaws.com",
     ],
   },
 };

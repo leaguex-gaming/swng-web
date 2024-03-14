@@ -28,7 +28,7 @@ export const ProfilePic = ({
   const onUserProfilePress = async () => {
     if (user_id) {
       await dispatch(getUserProfile({ userId: user_id }));
-      router.push(`/user-details/${user_id}`);
+      router.push(`/profile/${user_id}`);
       dispatch(
         getPostsByUserId({
           page_number: 1,
