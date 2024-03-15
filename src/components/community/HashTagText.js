@@ -173,6 +173,7 @@ const HashTagText = React.memo(
             word.startsWith("https") ||
             word === "Read More";
 
+          const newLine = word[0] === "\n";
           // Define the style based on the presence of the "#" symbol or if it's a link
           const wordStyle = isHashTag
             ? styles.blueText
@@ -221,6 +222,8 @@ const HashTagText = React.memo(
                 {word}
               </MyText>
             );
+          } else if (newLine) {
+            return <p></p>;
           } else {
             return (
               <MyText
