@@ -49,16 +49,18 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
 export default function RootLayout({ children }) {
   const userToken = cookies().get("accessToken")?.value;
 
   return (
     <html lang="en">
-      <head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
-      </head>
       <body
         className={`${jaguar.variable} ${ProductSansBold.variable} ${ProductSansRegular.variable}`}>
         <div
