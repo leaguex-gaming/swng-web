@@ -197,9 +197,11 @@ const CommentInput = ({
               },
             ])}
             value={value}
-            onClick={() => {
+            onClick={(e) => {
               if (is_guest) {
                 dispatch(updateSignupFrom("default"));
+              } else {
+                e.stopPropagation();
               }
             }}
             onFocus={() =>
