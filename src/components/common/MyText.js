@@ -133,14 +133,14 @@ const styles = StyleSheet.create({
     color: "white",
   },
   paragraphText: {
-    fontSize: 12,
+    fontSize: "2vh",
     color: white,
   },
   inputPlaceholderText: {
-    fontSize: 20,
+    fontSize: "2vh",
   },
   commentPlaceholderText: {
-    fontSize: 14,
+    fontSize: "2vh",
   },
   buttonText: {
     fontWeight: "400",

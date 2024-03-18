@@ -36,9 +36,13 @@ import { debounce } from "lodash";
 // import { getMatchesThunk } from "../redux/thunks/broadcast";
 import { black } from "@/constants/theme/colors";
 import Post from "@/components/community/Post";
+import CreatePostIcon from "../../public/svg/community/CreatePostIcon";
+import { useRouter } from "next/navigation";
 // import SuggestedProfiles from "@/components/community/SuggestedProfiles";
 
 const Feed = () => {
+  const router = useRouter();
+
   //---------------------------------------------state management------------------------------------------//
   const [refreshing, setRefreshing] = useState(false);
   const [currentTopicObj, setCurrentTopic] = useState({
@@ -270,13 +274,9 @@ const Feed = () => {
       if (is_guest) {
         dispatch(updateSignupFrom("default"));
       } else {
-        rootNavigate("CreatePost", "navigate");
+        router.push("/intent/post");
       }
-    } catch (err) {
-      if (__DEV__) {
-        errorToast(err);
-      }
-    }
+    } catch (err) {}
   };
 
   //--------------------------------------render ui----------------------------------------//
@@ -336,7 +336,7 @@ const Feed = () => {
 
           {!createPostLoading && (
             <Pressable style={styles.createPost} onPress={createPostHandler}>
-              {/* <CreatePostIcon /> */}
+              <CreatePostIcon />
             </Pressable>
           )}
         </View>

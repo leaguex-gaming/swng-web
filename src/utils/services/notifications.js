@@ -2,7 +2,6 @@
 
 import { setPushNotification } from "@/store/slices/common-slice";
 import store from "@/store/store";
-// import Toast from "react-native-toast-message";
 import { getNotificationHistory } from "@/store/thunks/community";
 import { removeFcm } from "@/store/thunks/authentication";
 

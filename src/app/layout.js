@@ -1,7 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./provider";
-import { cookies } from "next/headers";
 import Modals from "@/components/modals/Modals";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -57,8 +56,6 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
-  const userToken = cookies().get("accessToken")?.value;
-
   return (
     <html lang="en">
       <body

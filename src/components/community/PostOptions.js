@@ -29,7 +29,6 @@ import {
 import AnalyticsIcon from "../../../public/svg/community/AnalyticsIcon";
 import { getPostScore } from "@/utils/helpers/getPostScore";
 // import { logEvent } from "../../utils/events";
-import { ShareToSocial } from "../../utils/helpers/ShareToSocial";
 import Image from "next/image";
 import ClappingHands from "../../../public/images/clapping-hands.png";
 import { useRouter } from "next/navigation";

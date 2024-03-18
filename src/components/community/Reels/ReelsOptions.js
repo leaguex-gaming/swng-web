@@ -5,7 +5,6 @@ import {
   updateSignupFrom,
 } from "@/store/slices/common-slice";
 import { usersFollow } from "@/store/thunks/community";
-import { ShareToSocial } from "@/utils/helpers/ShareToSocial";
 import { Pressable, View, StyleSheet } from "react-native-web";
 import {
   Comment,

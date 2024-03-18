@@ -80,6 +80,8 @@ export const LinearGradientBackground = ({
       style={StyleSheet.flatten([
         {
           background: `linear-gradient(to bottom, ${colors[0]}, ${colors[1]})`,
+          width: windowMaxWidth,
+          height: "100%",
         },
         containerStyle,
       ])}>

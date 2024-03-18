@@ -7,7 +7,11 @@ const {
   blackOpacity,
 } = require("@/constants/theme/colors");
 
-export const customStyles = (modalHeight, bottom = 0) => {
+export const customStyles = (
+  modalHeight,
+  bottom = 0,
+  background = postBackground[theme]
+) => {
   return {
     overlay: {
       backgroundColor: blackOpacity,
@@ -21,8 +25,9 @@ export const customStyles = (modalHeight, bottom = 0) => {
       bottom: bottom,
       padding: 0,
       border: 0,
-      background: postBackground[theme],
+      background: background,
       borderRadius: 0,
+      scrollbars: false,
     },
   };
 };

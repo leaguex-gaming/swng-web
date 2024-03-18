@@ -285,10 +285,11 @@ export const createPostThunk = createAsyncThunk(
 
         thunkAPI.dispatch(addPost(response.data.post));
 
-        const temporaryPosts = await thunkAPI
-          .getState()
-          .community.posts[0].posts.slice(0, POST_API_CALL_PAGE_SIZE);
-        await storeDataToAsyncStorage("posts", temporaryPosts);
+        // const temporaryPosts = await thunkAPI
+        //   .getState()
+        //   .community.posts[0].posts.slice(0, POST_API_CALL_PAGE_SIZE);
+
+        // await storeDataToAsyncStorage("posts", temporaryPosts);
 
         thunkAPI.dispatch(updateApiLoading({ loading: false, content: "" }));
 
@@ -303,7 +304,8 @@ export const createPostThunk = createAsyncThunk(
             navigate: true,
           },
         });
-        redirect("../");
+
+        return true;
       } else {
         const { controller } = payload;
 
@@ -391,10 +393,10 @@ export const createPostThunk = createAsyncThunk(
               navigate: true,
             },
           });
-          const temporaryPosts = await thunkAPI
-            .getState()
-            .community.posts[0].posts.slice(0, 10);
-          await storeDataToAsyncStorage("posts", temporaryPosts);
+          // const temporaryPosts = await thunkAPI
+          //   .getState()
+          //   .community.posts[0].posts.slice(0, 10);
+          // await storeDataToAsyncStorage("posts", temporaryPosts);
         } else {
           warning({
             props: {
@@ -404,10 +406,11 @@ export const createPostThunk = createAsyncThunk(
           });
         }
         thunkAPI.dispatch(updateApiLoading({ loading: false, content: "" }));
-        redirect("../");
+
         return true;
       }
     } catch (err) {
+      console.log(err);
       thunkAPI.dispatch(updateApiLoading({ loading: false, content: "" }));
 
       errorToast(err);

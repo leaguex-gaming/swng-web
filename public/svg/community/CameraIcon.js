@@ -19,7 +19,7 @@ function CameraIcon(props) {
         y={0}
         width={18}
         height={14}>
-        <Path d="M0 0h17.25v13.434H0V0z" fill="#fff" />
+        <path d="M0 0h17.25v13.434H0V0z" fill="#fff" />
       </mask>
       <g mask="url(#a)">
         <path

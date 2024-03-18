@@ -34,6 +34,8 @@ const CLAP = require(`../../../public/images/clapping-hands.png`);
 const COMMENT = require(`../../../public/gif/Comment.gif`);
 const MEDAL = require(`../../../public/gif/Medal.gif`);
 
+const MODALHEIGHT = windowMaxWidth >= 500 ? 330 : 360;
+
 const SignupModalize = ({ type = "clap", modalizeRef }) => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -57,10 +59,11 @@ const SignupModalize = ({ type = "clap", modalizeRef }) => {
       isOpen={() => {}}
       onRequestClose={() => dispatch(updateSignupFrom(""))}
       shouldCloseOnOverlayClick={true}
-      style={customStyles(320, 0)}>
+      style={customStyles(MODALHEIGHT, 0)}>
       <LinearGradientBackground
         colors={["#988FFF", "#FFFFFF"]}
         containerStyle={{
+          height: MODALHEIGHT,
           borderTopLeftRadius: 10,
           borderTopRightRadius: 10,
         }}>

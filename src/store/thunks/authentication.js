@@ -67,21 +67,6 @@ const googleSignIn = createAsyncThunk(
 
 const guestLogin = createAsyncThunk("auth/guestLogin", async (_, thunkAPI) => {
   try {
-    // let id;
-
-    // const randomString =
-    //   Math.random().toString(20).substring(2, 14) +
-    //   Math.random().toString(20).substring(2, 14);
-
-    // id = `${randomString}`;
-
-    // let requestPayload = {
-    //   device_id: id,
-    // };
-
-    // let response = await ApiService.post(GUEST_LOGIN, requestPayload);
-
-    // if (response.status === 200 && response.data.access_token) {
     let userData = {
       is_guest: true,
       message: "Guest user found!",
