@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./../components/common/toast.css";
 import UserRestiction from "@/utils/UserRestriction";
+import { cookies } from "next/headers";
 
 const jaguar = localFont({
   src: "../../public/fonts/Jaguar.ttf",
@@ -56,6 +57,8 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
+  const userToken = cookies().get("accessToken")?.value;
+
   return (
     <html lang="en">
       <body
