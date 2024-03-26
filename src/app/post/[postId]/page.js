@@ -9,12 +9,12 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const res = await fetch(url).then((res) => res.json());
 
   return {
-    title: `Swng photos and videos . ${res?.posts?.topic?.name}`,
+    title: `Swng photos and videos . ${res?.posts?.topic?.name?.toLowerCase()}`,
     description: `Swng photos and videos .  ${res?.posts?.content}`,
     keywords: `Swng, Sports, Sport Feeds, ${res?.posts?.topic.name}, ${res?.posts?.subtopic?.name}`,
 
     openGraph: {
-      title: `Swng photos and videos . ${res?.posts?.topic?.name} `,
+      title: `Swng photos and videos . ${res?.posts?.topic?.name?.toLowerCase()}`,
       description: `Swng photos and videos .  ${res?.posts?.content}`,
       type: "article",
       url: "https://www.swng.fan/",
