@@ -5,7 +5,7 @@ export default async function sitemap() {
   const posts = data;
 
   const postEntries = posts?.map(({ id, updated_at }) => ({
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${id}`,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/post/${id}`,
     lastModified: `${updated_at}`,
     priority: 0.9,
   }));
